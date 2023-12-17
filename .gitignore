@@ -1,0 +1,7 @@
+/Backend/bin/
+/Backend/obj/
+/.idea/
+/FunctionalTests/bin/
+/FunctionalTests/obj/
+/UnitTests/bin/
+/UnitTests/obj/
