@@ -57,8 +57,8 @@ public class FunctionalTest1
 
         StartBackend();
         
-        // Allow 2.5 seconds for backend to start.
-        await Task.Delay(2_500);
+        // Allow 5 seconds for backend to start.
+        await Task.Delay(5_000);
 
         using var client = new HttpClient();
         try
