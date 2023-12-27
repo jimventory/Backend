@@ -19,8 +19,7 @@ public class FunctionalTest1
 
     private void KillBackend()
     {
-        _proc?.Kill();
-
+        _proc?.Kill(true);
         _proc = null;
     }
     
@@ -77,5 +76,7 @@ public class FunctionalTest1
             _testOutputHelper.WriteLine(e.ToString());
             Assert.Fail(e.ToString());
         }
+
+        KillBackend();
     }
 }
