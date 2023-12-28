@@ -1,0 +1,13 @@
+/Backend/bin/*
+/Backend/obj/*
+!/Backend/bin/.gitkeep
+!/Backend/obj/.gitkeep
+/.idea/
+/FunctionalTests/bin/*
+/FunctionalTests/obj/*
+!/FunctionalTests/bin/.gitkeep
+!/FunctionalTests/obj/.gitkeep
+/UnitTests/bin/*
+/UnitTests/obj/*
+!/UnitTests/bin/.gitkeep
+!/UnitTests/obj/.gitkeep
