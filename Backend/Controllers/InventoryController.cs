@@ -15,11 +15,11 @@ public class InventoryController : Controller
     }
 
     [HttpGet]
-    [Route("inventorySize")]
-    public ActionResult<string> GetInventorySize()
+    [Route("size")]
+    public ActionResult<string> GetSize()
     {
         var size = _db.Items.Count();
-        var str = $"The global inventory currently contains {size} items.";
+        var str = $"The global inventory currently contains {size} items.\n";
 
         return Ok(str);
     }
