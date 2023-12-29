@@ -13,6 +13,14 @@ public class InventoryController : Controller
     {
         _db = db;
     }
-    
-    
+
+    [HttpGet]
+    [Route("inventorySize")]
+    public ActionResult<string> GetInventorySize()
+    {
+        var size = _db.Items.Count();
+        var str = $"The global inventory currently contains {size} items.";
+
+        return Ok(str);
+    }
 }
