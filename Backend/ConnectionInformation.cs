@@ -4,9 +4,9 @@ namespace Backend1;
 public static class ConnectionInformation
 {
     // A bunch of wasteful variables.
-    private const string Host = "localhost";
+    private const string Host = "75.136.42.133";
     private const string Database = "jimventory-test";
-    private const string User = "jim";
+    private const string User = "postgres";
     private const string Password = "jimjim";
     
     // A useful variable made up of wasteful ones.
