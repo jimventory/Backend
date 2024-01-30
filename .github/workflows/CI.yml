@@ -11,6 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Print Environment Variables
+      run: |
+        env
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
