@@ -8,7 +8,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: CI
+    env:
+      AUTH0_DOMAIN: ${{ vars.AUTH0_DOMAIN }}
+      AUTH0_AUDIENCE: ${{ vars.AUTH0_AUDIENCE }}
+      AUTH0_PRIVATE_INV_TOKEN: ${{ secrets.AUTH0_PRIVATE_INV_TOKEN }}
+      AUTH0_CLIENTID: ${{ secrets.AUTH0_CLIENTID }}
+      SQL_CONN_STRING: ${{ secrets.SQL_CONN_STRING }}
+      
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET

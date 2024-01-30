@@ -8,8 +8,6 @@ public class InventoryContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // Connection information should not be stored in code.
-        // TODO: Care about best practices.
-        optionsBuilder.UseNpgsql(ConnectionInformation.PostgresConnString);
+        optionsBuilder.UseNpgsql(EnvVarHelper.GetVariable("SQL_CONN_STRING"));
     }
 }

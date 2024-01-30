@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using Backend1;
 using Xunit.Abstractions;
 
 namespace FunctionalTests;
@@ -30,8 +32,6 @@ public class FunctionalTest1
         await Task.Delay(5_000);
 
         await HitEndpoint(endpoint, expected);
-
-        KillBackend();
     }
 
     [Fact]
@@ -48,17 +48,78 @@ public class FunctionalTest1
 
         // Test endpoint.
         await HitEndpoint(endpoint, expected);
-        
-        KillBackend();
     }
 
+    [Fact]
+    public async Task PrivateEndpointNoAuth()
+    {
+        const string endpoint = $"{ApiPath}/inventory/private";
+        const string expected = "";
+        _testOutputHelper.WriteLine(endpoint);
+
+        StartBackend();
+
+        await Task.Delay(5_000);
+        
+        using var client = new HttpClient();
+        try
+        {
+            var response = await client.GetAsync(endpoint);
+
+            Assert.False(response.IsSuccessStatusCode);
+        }
+        catch (Exception e)
+        {
+            Assert.Fail(e.ToString());
+        }
+        finally
+        {
+            KillBackend();
+        }
+    }
+
+    [Fact]
+    public async Task PrivateEndpointAuth()
+    {
+        const string endpoint = $"{ApiPath}/inventory/private";
+        const string expected = "This is a private endpoint in the inventory controller.\n";
+        _testOutputHelper.WriteLine(endpoint);
+
+        StartBackend();
+
+        await Task.Delay(5_000);
+        
+        using var client = new HttpClient();
+        try
+        {
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", EnvVarHelper.GetVariable("AUTH0_PRIVATE_INV_TOKEN"));
+
+            var response = await client.GetAsync(endpoint);
+
+            Assert.True(response.IsSuccessStatusCode);
+
+            var content = await response.Content.ReadAsStringAsync();
+            
+            Assert.Equal(expected, content);
+        }
+        catch (Exception e)
+        {
+            Assert.Fail(e.ToString());
+        }
+        finally
+        {
+            KillBackend();
+        }
+    }
+    
     private async Task HitEndpoint(string endpoint, string expected)
     {
         using var client = new HttpClient();
         try
         {
             var response = await client.GetAsync(endpoint);
-                
+
             Assert.True(response.IsSuccessStatusCode);
 
             var content = await response.Content.ReadAsStringAsync();
@@ -70,6 +131,10 @@ public class FunctionalTest1
         {
             _testOutputHelper.WriteLine(e.ToString());
             Assert.Fail(e.ToString());
+        }
+        finally
+        {
+            KillBackend();
         }
     }
     

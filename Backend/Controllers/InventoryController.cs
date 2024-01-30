@@ -1,4 +1,6 @@
 using Backend1.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend1.Controllers;
@@ -22,5 +24,13 @@ public class InventoryController : Controller
         var str = $"The global inventory currently contains {size} items.\n";
 
         return Ok(str);
+    }
+    
+    [HttpGet("private")]
+    [EnableCors]
+    [Authorize]
+    public ActionResult<string> PrivateEndpointPlaceholder()
+    {
+        return Ok("This is a private endpoint in the inventory controller.\n");
     }
 }
