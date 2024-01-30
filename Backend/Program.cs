@@ -7,14 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Try to get env. var.
-var dom = Environment.GetEnvironmentVariable("AUTH0_DOMAIN");
-if (dom is null)
-    throw new Exception("Couldn't find AUTH0 domain.");
-
-Console.WriteLine(dom);
-
-var domain = $"https://{builder.Configuration["Auth0:Domain"]}/";
+var domain = $"https://{EnvVarHelper.GetVariable("AUTH0_DOMAIN")}/";
 
 builder.Services.AddDbContext<InventoryContext>();
 builder.Services.AddControllers();
@@ -35,7 +28,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = domain;
-        options.Audience = builder.Configuration["Auth0:Audience"];
+        options.Audience = EnvVarHelper.GetVariable("AUTH0_AUDIENCE");
         options.TokenValidationParameters = new TokenValidationParameters
         {
             NameClaimType = ClaimTypes.NameIdentifier
