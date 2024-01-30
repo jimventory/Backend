@@ -29,11 +29,8 @@ public class InventoryController : Controller
     [HttpGet("private")]
     [EnableCors]
     [Authorize]
-    public IActionResult PrivateEndpointPlaceholder()
+    public ActionResult<string> PrivateEndpointPlaceholder()
     {
-        return Ok(new
-        {
-            Message = "This is a private endpoint in the inventory controller."
-        });
+        return Ok("This is a private endpoint in the inventory controller.\n");
     }
 }
