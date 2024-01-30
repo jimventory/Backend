@@ -29,7 +29,7 @@ public class FunctionalTest1
         StartBackend();
         
         // Allow 5 seconds for backend to start.
-        await Task.Delay(10_000);
+        await Task.Delay(5_000);
 
         await HitEndpoint(endpoint, expected);
     }
@@ -44,7 +44,7 @@ public class FunctionalTest1
         StartBackend();
         
         // Allow 5 seconds for backend to start.
-        await Task.Delay(10_000);
+        await Task.Delay(5_000);
 
         // Test endpoint.
         await HitEndpoint(endpoint, expected);
@@ -59,7 +59,7 @@ public class FunctionalTest1
 
         StartBackend();
 
-        await Task.Delay(10_000);
+        await Task.Delay(5_000);
         
         using var client = new HttpClient();
         try
@@ -87,7 +87,7 @@ public class FunctionalTest1
 
         StartBackend();
 
-        await Task.Delay(10_000);
+        await Task.Delay(5_000);
         
         using var client = new HttpClient();
         try
