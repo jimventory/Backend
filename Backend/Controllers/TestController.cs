@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Backend1.Controllers;
 
 [ApiController]
 [Route("api/test")]
