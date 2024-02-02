@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 var domain = $"https://{EnvVarHelper.GetVariable("AUTH0_DOMAIN")}/";
 
 builder.Services.AddDbContext<InventoryContext>();
+builder.Services.AddDbContext<BusinessContext>();
 builder.Services.AddControllers();
 
 // TODO: I think allowing any origin in prod is bad; for dev purposes, I added this.
