@@ -1,4 +1,5 @@
 using Backend1.Data;
+using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
