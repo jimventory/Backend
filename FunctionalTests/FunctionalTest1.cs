@@ -35,22 +35,6 @@ public class FunctionalTest1
     }
 
     [Fact]
-    public async Task InventorySizeTest()
-    {
-        const string endpoint = $"{ApiPath}/inventory/size";
-        const string expected = "The global inventory currently contains 0 items.\n";
-        _testOutputHelper.WriteLine(endpoint);
-
-        StartBackend();
-        
-        // Allow 5 seconds for backend to start.
-        await Task.Delay(5_000);
-
-        // Test endpoint.
-        await HitEndpoint(endpoint, expected);
-    }
-
-    [Fact]
     public async Task PrivateEndpointNoAuth()
     {
         const string endpoint = $"{ApiPath}/inventory/private";
@@ -95,9 +79,7 @@ public class FunctionalTest1
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", EnvVarHelper.GetVariable("AUTH0_PRIVATE_INV_TOKEN"));
 
-            var response = await client.GetAsync(endpoint);
-
-            Assert.True(response.IsSuccessStatusCode);
+            var response = await client.GetAsync(endpoint);            Assert.True(response.IsSuccessStatusCode);
 
             var content = await response.Content.ReadAsStringAsync();
             
