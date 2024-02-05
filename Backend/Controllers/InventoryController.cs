@@ -1,4 +1,5 @@
 using Backend1.Data;
+using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -32,5 +33,15 @@ public class InventoryController : Controller
     public ActionResult<string> PrivateEndpointPlaceholder()
     {
         return Ok("This is a private endpoint in the inventory controller.\n");
+    }
+
+    [HttpPost]
+    [Route("add")]
+    public ActionResult AddItem([FromBody] Item newItem)
+    {
+        _db.Items.Add(newItem);
+        _db.SaveChanges();
+
+        return Ok(newItem);
     }
 }
