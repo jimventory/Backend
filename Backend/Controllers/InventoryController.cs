@@ -44,4 +44,19 @@ public class InventoryController : Controller
 
         return Ok(newItem);
     }
+
+    [HttpDelete]
+    [Route("remove/{id}")]
+    public ActionResult DeleteItem(uint id) {
+        var item = _db.Items.Find(id);
+        
+        if (item == null) {
+            return NotFound($"Item {id} not found");
+        }
+        Console.WriteLine(item.Name);
+        _db.Items.Remove(item);
+        _db.SaveChanges();
+        return Ok("item removed");
+    }
+
 }
