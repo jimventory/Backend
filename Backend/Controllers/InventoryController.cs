@@ -53,10 +53,10 @@ public class InventoryController : Controller
         if (item == null) {
             return NotFound($"Item {id} not found");
         }
-        Console.WriteLine(item.Name);
+        
         _db.Items.Remove(item);
         _db.SaveChanges();
-        return Ok("item removed");
+        return NoContent();
     }
 
 }
