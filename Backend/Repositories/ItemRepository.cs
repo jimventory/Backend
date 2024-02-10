@@ -16,7 +16,7 @@ public class ItemRepository : IItemRepository
     
     public Item GetById(uint id)
     {
-        throw new NotImplementedException();
+        return _db.Items.Find(id) ?? throw new Exception($"Could not find item with ID {id}.");
     }
 
     public IEnumerable<Item> GetAll()
@@ -26,16 +26,20 @@ public class ItemRepository : IItemRepository
 
     public void Add(Item it)
     {
-        throw new NotImplementedException();
+        _db.Items.Add(it);
+        _db.SaveChanges();
     }
 
-    public void Update(Item it)
+    public void Update(uint id, Item it)
     {
-        throw new NotImplementedException();
+        var old = GetById(id);
+        _db.Items.Entry(old).CurrentValues.SetValues(it);
+        _db.SaveChanges();
     }
 
     public void Delete(Item it)
     {
-        throw new NotImplementedException();
+        _db.Items.Remove(it);
+        _db.SaveChanges();
     }
 }
