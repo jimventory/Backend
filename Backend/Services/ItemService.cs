@@ -3,7 +3,7 @@ using Backend1.Models;
 
 namespace Backend1.Services;
 
-public class ItemService
+public class ItemService : IItemService
 {
     private readonly IItemRepository _repository;
     private readonly ILogger _logger;
