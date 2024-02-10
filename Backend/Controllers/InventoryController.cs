@@ -37,6 +37,18 @@ public class InventoryController : Controller
         
         return Ok(newItem);
     }
+
+    [HttpPut]
+    [Route("update")]
+    public ActionResult UpdateItem([FromBody] Item updateItem)
+    {
+        var rv = _itemService.Update(updateItem);
+
+        if (rv == false)
+            return StatusCode(500);
+
+        return Ok($"Updated item with ID {updateItem.Id}.");
+    }
     
     [HttpDelete]
     [Route("remove/{id}")]
