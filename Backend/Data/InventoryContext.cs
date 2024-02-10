@@ -6,8 +6,14 @@ public class InventoryContext : DbContext
 {
     public DbSet<Item> Items { get; set; }
 
+    public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
+    {
+        
+    }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(EnvVarHelper.GetVariable("SQL_CONN_STRING"));
+        if (optionsBuilder.IsConfigured == false)
+            optionsBuilder.UseNpgsql(EnvVarHelper.GetVariable("SQL_CONN_STRING"));
     }
 }
