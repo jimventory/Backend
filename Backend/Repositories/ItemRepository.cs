@@ -21,7 +21,7 @@ public class ItemRepository : IItemRepository
 
     public IEnumerable<Item> GetAll()
     {
-        throw new NotImplementedException();
+        return _db.Items.ToList();
     }
 
     public void Add(Item it)
