@@ -30,9 +30,9 @@ public class ItemRepository : IItemRepository
         _db.SaveChanges();
     }
 
-    public void Update(uint id, Item it)
+    public void Update(Item it)
     {
-        var old = GetById(id);
+        var old = GetById(it.Id);
         _db.Items.Entry(old).CurrentValues.SetValues(it);
         _db.SaveChanges();
     }
