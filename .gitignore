@@ -15,3 +15,7 @@
 /IntegrationTests/obj/*
 !/IntegrationTests/bin/.gitkeep
 !/IntegrationTests/obj/.gitkeep
+/TestHelpers/bin/*
+/TestHelpers/obj/*
+!/TestHelpers/bin/.gitkeep
+!/TestHelpers/obj/.gitkeep
