@@ -11,3 +11,7 @@
 /UnitTests/obj/*
 !/UnitTests/bin/.gitkeep
 !/UnitTests/obj/.gitkeep
+/IntegrationTests/bin/*
+/IntegrationTests/obj/*
+!/IntegrationTests/bin/.gitkeep
+!/IntegrationTests/obj/.gitkeep
