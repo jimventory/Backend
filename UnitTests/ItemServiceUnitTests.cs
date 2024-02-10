@@ -3,6 +3,7 @@ using Backend1.Models;
 using Backend1.Services;
 using FakeItEasy;
 using Microsoft.Extensions.Logging.Abstractions;
+using TestHelpers;
 using Xunit.Abstractions;
 
 namespace UnitTests;
@@ -19,7 +20,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestAddException()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Add(item))
@@ -33,7 +34,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestAddSuccess()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Add(item))
@@ -47,7 +48,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestUpdateGetItemException()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.GetById(item.Id))
@@ -64,7 +65,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestUpdateException()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Update(item))
@@ -78,7 +79,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestUpdateSuccess()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Update(item))
@@ -92,7 +93,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteByItemException()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Delete(item))
@@ -106,7 +107,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteByIdGetItemException()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.GetById(item.Id))
@@ -123,7 +124,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteByIdException()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.GetById(item.Id))
@@ -140,7 +141,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteItemSuccess()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Delete(item))
@@ -154,7 +155,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteByIdSuccess()
     {
-        var item = GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem();
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Delete(item))
@@ -165,15 +166,5 @@ public class ItemServiceUnitTests
         Assert.True(sut.Delete(0));
     }
     
-    private static Item GetBoilerplateItem()
-    {
-        return new Item
-        {
-            Id = 0,
-            BusinessId = 0,
-            Name = "FakeItem",
-            Quantity = 5
-        };
-    }
     
 }
