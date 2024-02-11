@@ -23,7 +23,6 @@ public class PrivateEndpointFuncTests
     public async Task PrivateEndpointNoAuth()
     {
         const string endpoint = $"{ApiPath}/inventory/private";
-        const string expected = "";
         _testOutputHelper.WriteLine(endpoint);
 
         StartBackend();
