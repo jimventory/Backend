@@ -1,5 +1,7 @@
+using Backend1.Abstractions;
 using Backend1.Factories;
 using Backend1.Data;
+using Backend1.Models;
 using Backend1.Types;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -11,39 +13,22 @@ namespace Backend1.Controllers;
 [Route("api/business")]
 public class BusinessController : Controller
 {
-    private readonly BusinessFactory _factory = new();
-    private BusinessContext _db;
+    private readonly IBusinessService _businessService;
     
-    public BusinessController(BusinessContext db)
+    public BusinessController(IBusinessService businessService)
     {
-        _db = db;
-    }
-
-    [HttpGet("helloWorld")]
-    [EnableCors]
-    public ActionResult<string> HelloWorld([FromQuery] string name = "world")
-    {
-        string s = $"Hello, {name}!\n";
-        return Ok(s);
+        _businessService = businessService;
     }
 
     [HttpPut("register")]
-    [EnableCors]
-    public ActionResult<string> Register([FromBody] BusinessRegistrationForm form)
+    public ActionResult Register([FromBody] Business business)
     {
-        var business = _factory.MakeBusiness(form);
-        
-        _db.Businesses.Add(business);
+        var rv = _businessService.Add(business);
 
-        try
-        {
-            _db.SaveChanges();
-        }
-        catch (DbUpdateException ex)
-        {
-            return BadRequest(ex.InnerException?.Message ?? ex.Message);
-        }
+        // Failed to add.
+        if (rv == false)
+            return StatusCode(500);
         
-        return Ok($"This in development, but we've got you down on our list!");
+        return Ok(business);
     }
 }
