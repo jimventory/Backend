@@ -1,11 +1,6 @@
 using Backend1.Abstractions;
-using Backend1.Factories;
-using Backend1.Data;
 using Backend1.Models;
-using Backend1.Types;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend1.Controllers;
 
