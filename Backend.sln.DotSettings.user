@@ -18,9 +18,14 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ae0d61f8_002Dfaec_002D490e_002D8732_002D0bf2d3ac70fd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestGetByIdSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::B57BEF54-6DBD-4588-9B73-6E92B41D24CD::net8.0::IntegrationTests.ItemRepositoryIntegrationTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::84AFD492-CC21-44B3-B2EB-7ACE138676C2::net8.0::UnitTests.BusinessServiceUnitTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Or&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::B57BEF54-6DBD-4588-9B73-6E92B41D24CD::net8.0::IntegrationTests.ItemRepositoryIntegrationTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::84AFD492-CC21-44B3-B2EB-7ACE138676C2::net8.0::UnitTests.BusinessServiceUnitTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::B57BEF54-6DBD-4588-9B73-6E92B41D24CD::net8.0::IntegrationTests.BusinessRepositoryIntegrationTests&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;Project Location="/Users/noah/RiderProjects/Backend/UnitTests" Presentation="&amp;lt;UnitTests&amp;gt;" /&gt;
+    &lt;Project Location="/Users/noah/RiderProjects/Backend/FunctionalTests" Presentation="&amp;lt;FunctionalTests&amp;gt;" /&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String></wpf:ResourceDictionary>

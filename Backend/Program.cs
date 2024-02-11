@@ -15,6 +15,8 @@ builder.Services.AddDbContext<InventoryContext>();
 builder.Services.AddDbContext<BusinessContext>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IItemService, ItemService>();
+builder.Services.AddScoped<IBusinessRepository, BusinessRepository>();
+builder.Services.AddScoped<IBusinessService, BusinessService>();
 builder.Services.AddControllers();
 
 // TODO: I think allowing any origin in prod is bad; for dev purposes, I added this.
