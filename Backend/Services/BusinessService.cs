@@ -28,24 +28,4 @@ public class BusinessService : IBusinessService
         
         return true;
     }
-
-    // I'm not going to bother implementing this for now, as all we currently support is registration.
-    // We'll likely add updates in the future, but currently there isn't much to update.
-    // And there really isn't any reason for anyone to delete their business.
-    // So, in conclusion: maybe do later.
-    
-    public bool Update(Business business)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool Delete(Business business)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool Delete(uint id)
-    {
-        throw new NotImplementedException();
-    }
 }
