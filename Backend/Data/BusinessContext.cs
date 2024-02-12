@@ -6,8 +6,14 @@ public class BusinessContext : DbContext
 {
     public DbSet<Business> Businesses { get; set; }
 
+    public BusinessContext(DbContextOptions<BusinessContext> options) : base(options)
+    {
+        
+    }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(EnvVarHelper.GetVariable("SQL_CONN_STRING"));
+        if (optionsBuilder.IsConfigured == false)
+            optionsBuilder.UseNpgsql(EnvVarHelper.GetVariable("SQL_CONN_STRING"));
     }
 }

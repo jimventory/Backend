@@ -1,4 +1,4 @@
-using Backend1.Data;
+using Backend1.Abstractions;
 using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -10,27 +10,17 @@ namespace Backend1.Controllers;
 [Route("api/inventory")]
 public class InventoryController : Controller
 {
-    private InventoryContext _db;
+    private readonly IItemService _itemService;
     
-    public InventoryController(InventoryContext db)
+    public InventoryController(IItemService itemService)
     {
-        _db = db;
-    }
-
-    [HttpGet]
-    [Route("size")]
-    public ActionResult<string> GetSize()
-    {
-        var size = _db.Items.Count();
-        var str = $"The global inventory currently contains {size} items.\n";
-
-        return Ok(str);
+        _itemService = itemService;
     }
     
     [HttpGet("private")]
     [EnableCors]
     [Authorize]
-    public ActionResult<string> PrivateEndpointPlaceholder()
+    public ActionResult PrivateEndpointPlaceholder()
     {
         return Ok("This is a private endpoint in the inventory controller.\n");
     }
@@ -39,24 +29,37 @@ public class InventoryController : Controller
     [Route("add")]
     public ActionResult AddItem([FromBody] Item newItem)
     {
-        _db.Items.Add(newItem);
-        _db.SaveChanges();
+        var rv = _itemService.Add(newItem);
 
+        // Failed to add.
+        if (rv == false)
+            return StatusCode(500);
+        
         return Ok(newItem);
     }
 
+    [HttpPut]
+    [Route("update")]
+    public ActionResult UpdateItem([FromBody] Item updateItem)
+    {
+        var rv = _itemService.Update(updateItem);
+
+        if (rv == false)
+            return StatusCode(500);
+
+        return Ok($"Updated item with ID {updateItem.Id}.");
+    }
+    
     [HttpDelete]
     [Route("remove/{id}")]
-    public ActionResult DeleteItem(uint id) {
-        var item = _db.Items.Find(id);
-        
-        if (item == null) {
-            return NotFound($"Item {id} not found");
-        }
-        
-        _db.Items.Remove(item);
-        _db.SaveChanges();
-        return NoContent();
+    public ActionResult DeleteItem(uint id)
+    {
+        var rv = _itemService.Delete(id);
+
+        if (rv == false)
+            return StatusCode(500);
+
+        return Ok($"Deleted item with ID {id}.");
     }
 
 }
