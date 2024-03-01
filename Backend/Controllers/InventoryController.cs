@@ -61,10 +61,4 @@ public class InventoryController : Controller
 
         return Ok($"Deleted item with ID {id}.");
     }
-
-    [HttpGet("test")]
-    public ActionResult TestConnection()
-    {
-        return Ok("Connection to InventoryController successful.");
-    }
 }
