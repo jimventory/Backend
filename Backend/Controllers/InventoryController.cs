@@ -3,6 +3,7 @@ using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Backend1.Controllers;
 
@@ -60,5 +61,17 @@ public class InventoryController : Controller
             return StatusCode(500);
 
         return Ok($"Deleted item with ID {id}.");
+    }
+
+    [HttpGet]
+    [Route("getInventory/{businessId}")]
+    public ActionResult GetInventory(uint businessId)
+    {
+        var rv = _itemService.GetBusinessInventoryItems(businessId);
+
+        if (rv.IsNullOrEmpty())
+            return StatusCode(500);
+
+        return Ok(rv);
     }
 }

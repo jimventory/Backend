@@ -1,5 +1,6 @@
 using Backend1.Abstractions;
 using Backend1.Models;
+using Backend1.Repositories;
 using Backend1.Services;
 using FakeItEasy;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -166,4 +167,28 @@ public class ItemServiceUnitTests
         Assert.True(sut.Delete(0));
     }
 
+    [Fact]
+    public void TestGetBusinessInventorySuccess()
+    {
+        var nonBusinessItem = ItemHelper.GetBoilerplateItem();
+        nonBusinessItem.BusinessId = 1;
+        
+        var items = new List<Item>()
+        {
+            ItemHelper.GetBoilerplateItem(),
+            ItemHelper.GetBoilerplateItem(),
+            nonBusinessItem
+        };
+        
+        var fakeItemRepo = A.Fake<IItemRepository>();
+
+        A.CallTo(() => fakeItemRepo.GetAll())
+            .Returns(items);
+
+        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+
+        var rv = sut.GetBusinessInventoryItems(businessId: 0);
+        
+        Assert.Equal(items.Count - 1, rv.Count());
+    }
 }

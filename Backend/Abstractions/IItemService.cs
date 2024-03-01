@@ -8,4 +8,5 @@ public interface IItemService
     bool Update(Item item);
     bool Delete(Item item);
     bool Delete(uint id);
+    IEnumerable<Item> GetBusinessInventoryItems(uint businessId);
 }
