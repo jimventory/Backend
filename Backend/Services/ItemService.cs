@@ -86,4 +86,21 @@ public class ItemService : IItemService
         
         return true;
     }
+
+    public IEnumerable<Item> GetBusinessInventoryItems(uint businessId)
+    {
+        try
+        {
+            var globalInventory = _repository.GetAll();
+            var businessItems = globalInventory.Where((item) => item.BusinessId == businessId);
+
+            return businessItems;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Failed to get inventory: {ExMessage}", e.Message);
+        }
+
+        return Enumerable.Empty<Item>();
+    }
 }
