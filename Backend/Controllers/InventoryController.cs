@@ -67,16 +67,4 @@ public class InventoryController : Controller
     {
         return Ok("Connection to InventoryController successful.");
     }
-
-    [HttpPut]
-    [Route("update-sales/{saleAmount}")]
-    public ActionResult UpdateSales([FromBody] Item updateItemSales, uint saleAmount)
-    {
-        var rv = _itemService.UpdateSales(updateItemSales, saleAmount);
-
-        if (rv == false)
-            return StatusCode(500);
-
-        return Ok($"Updated item with ID {updateItemSales.Id} with {saleAmount} sales.");
-    }
 }

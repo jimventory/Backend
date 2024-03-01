@@ -8,5 +8,4 @@ public interface IItemService
     bool Update(Item item);
     bool Delete(Item item);
     bool Delete(uint id);
-    bool UpdateSales(Item item, uint sale);
 }

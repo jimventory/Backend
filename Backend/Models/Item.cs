@@ -8,4 +8,6 @@ public class Item
     public double Price { get; set; }
     public string Name { get; set; } = string.Empty;
     public uint Sales {  get; set; } 
+    public uint LowStockNotification {  get; set; }
+    public string About { get; set; } = string.Empty;
 }

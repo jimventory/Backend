@@ -29,7 +29,14 @@ namespace Backend1.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<long>("BusinessId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("LowStockNotification")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
