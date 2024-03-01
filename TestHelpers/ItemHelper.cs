@@ -11,7 +11,7 @@ public static class ItemHelper
             Id = 0,
             BusinessId = 0,
             Name = "FakeItem",
-            Quantity = 5
+            Quantity = 5,
         };
     }
 }

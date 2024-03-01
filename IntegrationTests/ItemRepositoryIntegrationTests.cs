@@ -16,18 +16,18 @@ public class ItemRepositoryIntegrationTests
             .UseInMemoryDatabase(databaseName: "TestDatabase")
             .Options;
     }
-    
+
     [Fact]
     public void TestAddItem()
     {
         using var db = new InventoryContext(_options);
         var sut = new ItemRepository(db);
         var item = ItemHelper.GetBoilerplateItem();
-            
+
         sut.Add(item);
 
         var found = db.Items.Find(item.Id);
-            
+
         Assert.NotNull(found);
     }
 
@@ -37,25 +37,25 @@ public class ItemRepositoryIntegrationTests
         using var db = new InventoryContext(_options);
         var sut = new ItemRepository(db);
         var item = ItemHelper.GetBoilerplateItem();
-        
+
         // Add the initial item and fail the test if we for some reason didn't insert.
         sut.Add(item);
         var found = db.Items.Find(item.Id);
         Assert.NotNull(found);
-        
+
         // Create a different object entirely to avoid immediately updating the Item (classes are reference types by default in C#)
         var updateItem = ItemHelper.GetBoilerplateItem();
         updateItem.Id = item.Id;
         updateItem.Name = "UpdatedName";
-        
+
         // Verify that the names is different but the ID is the same.
         Assert.NotEqual(updateItem.Name, item.Name);
         Assert.Equal(updateItem.Id, item.Id);
-        
+
         sut.Update(updateItem);
-        
+
         found = db.Items.Find(item.Id);
-            
+
         Assert.NotNull(found);
         Assert.Equal(updateItem.Name, found.Name);
     }
@@ -66,17 +66,17 @@ public class ItemRepositoryIntegrationTests
         using var db = new InventoryContext(_options);
         var sut = new ItemRepository(db);
         var item = ItemHelper.GetBoilerplateItem();
-            
+
         sut.Add(item);
 
         var found = db.Items.Find(item.Id);
-            
+
         Assert.NotNull(found);
-        
+
         sut.Delete(item);
-        
+
         found = db.Items.Find(item.Id);
-        
+
         Assert.Null(found);
     }
 
@@ -94,13 +94,13 @@ public class ItemRepositoryIntegrationTests
     {
         using var db = new InventoryContext(_options);
         var sut = new ItemRepository(db);
-        
+
         var item = ItemHelper.GetBoilerplateItem();
-            
+
         sut.Add(item);
-        
+
         var found = db.Items.Find(item.Id);
-            
+
         Assert.NotNull(found);
 
         var rv = sut.GetById(item.Id);
@@ -114,7 +114,7 @@ public class ItemRepositoryIntegrationTests
         var sut = new ItemRepository(db);
 
         var coll = sut.GetAll();
-        
+
         Assert.Empty(coll);
     }
 
@@ -127,12 +127,12 @@ public class ItemRepositoryIntegrationTests
         var items = new List<Item>();
         items.Add(ItemHelper.GetBoilerplateItem());
         items.Add(ItemHelper.GetBoilerplateItem());
-        
+
         sut.Add(items[0]);
         sut.Add(items[1]);
 
         var coll = sut.GetAll();
-        
+
         Assert.True(coll.SequenceEqual(items));
     }
 }
