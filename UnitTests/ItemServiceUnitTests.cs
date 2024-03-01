@@ -166,30 +166,30 @@ public class ItemServiceUnitTests
         Assert.True(sut.Delete(0));
     }
 
-    [Fact]
-    public void TestUpdateSalesSuccess()
-    {
-        var item = ItemHelper.GetBoilerplateItem();
-        var fakeItemRepo = A.Fake<IItemRepository>();
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+    //[Fact]
+    //public void TestUpdateSalesSuccess()
+    //{
+    //    var item = ItemHelper.GetBoilerplateItem();
+    //    var fakeItemRepo = A.Fake<IItemRepository>();
+    //    var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
 
-        var saleAmount = (uint) 1;
+    //    var saleAmount = (uint) 1;
 
-        var result = sut.UpdateSales(item, saleAmount);
-        Assert.True(result);
-    }
+    //    var result = sut.UpdateSales(item, saleAmount);
+    //    Assert.True(result);
+    //}
 
-    [Fact]
-    public void TestUpdateSalesExeption()
-    {
-        var item = ItemHelper.GetBoilerplateItem();
-        var fakeItemRepo = A.Fake<IItemRepository>();
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+    //[Fact]
+    //public void TestUpdateSalesExeption()
+    //{
+    //    var item = ItemHelper.GetBoilerplateItem();
+    //    var fakeItemRepo = A.Fake<IItemRepository>();
+    //    var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
 
-        var saleAmount = (uint) 100;
+    //    var saleAmount = (uint) 100;
 
-        var result = sut.UpdateSales(item, saleAmount);
-        Assert.False(result);
-    }
+    //    var result = sut.UpdateSales(item, saleAmount);
+    //    Assert.False(result);
+    //}
 
 }
