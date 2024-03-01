@@ -86,4 +86,31 @@ public class ItemService : IItemService
         
         return true;
     }
+
+    // Not allowing quanity to become negative because it is currently unsigned. Can change in the future
+    public bool UpdateSales(Item item, uint sales)
+    {
+        try
+        {
+            // This call throws an exception if it can't find the item.
+            var currentItem = _repository.GetById(item.Id);
+
+            if (currentItem.Quantity >= sales)
+            {
+                currentItem.Sales += sales;
+                currentItem.Quantity -= sales;
+                _repository.Update(currentItem);
+            }
+            else
+            {
+                throw new Exception("Sale amount exceeds quantity.");
+            }
+        }
+        catch (Exception e) 
+        {
+            _logger.LogError("Failed to delete item: {ExMessage}", e.Message);
+            return false;
+        }
+        return true;
+    }
 }
