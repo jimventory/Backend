@@ -173,7 +173,7 @@ public class ItemServiceUnitTests
         var fakeItemRepo = A.Fake<IItemRepository>();
         var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
 
-        var saleAmount = (uint) 1;
+        var saleAmount = (uint) 0;
 
         var result = sut.UpdateSales(item, saleAmount);
         Assert.True(result);
