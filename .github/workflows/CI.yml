@@ -14,6 +14,7 @@ jobs:
       AUTH0_AUDIENCE: ${{ vars.AUTH0_AUDIENCE }}
       AUTH0_PRIVATE_INV_TOKEN: ${{ secrets.AUTH0_PRIVATE_INV_TOKEN }}
       AUTH0_CLIENTID: ${{ secrets.AUTH0_CLIENTID }}
+      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
       SQL_CONN_STRING: ${{ secrets.SQL_CONN_STRING }}
       
     steps:
