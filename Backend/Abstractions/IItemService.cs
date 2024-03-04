@@ -9,4 +9,6 @@ public interface IItemService
     bool Delete(Item item);
     bool Delete(uint id);
     IEnumerable<Item> GetBusinessInventoryItems(uint businessId);
+
+    void SendEmailTest();
 }

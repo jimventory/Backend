@@ -1,5 +1,7 @@
 using Backend1.Abstractions;
 using Backend1.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace Backend1.Services;
 
@@ -103,4 +105,33 @@ public class ItemService : IItemService
 
         return Enumerable.Empty<Item>();
     }
+
+    public void SendEmailTest()
+    {
+        try
+        {
+            string fromMail = "streamlineinventorymanager@gmail.com";
+            string fromPassword = EnvVarHelper.GetVariable("STREAMLINE_EMAIL_PASSWORD");
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromMail);
+            message.Subject = "Test Subject";
+            message.To.Add(new MailAddress("vbroda@vols.utk.edu"));
+            message.Body = "<html><body>Hello world from Streamline </body></html>";
+            message.IsBodyHtml = true;
+
+            using (var smtpClient = new SmtpClient("smtp.gmail.com", 587))
+            {
+                smtpClient.EnableSsl = true;
+                smtpClient.Credentials = new NetworkCredential(fromMail, fromPassword);
+                smtpClient.Send(message);
+            }
+        }
+        catch (SmtpException ex)
+        {
+            _logger.LogError("Failed to send test email: {ExMessage}", ex.Message);
+            throw; // Re-throw the exception to propagate it further if needed
+        }
+    }
+
 }

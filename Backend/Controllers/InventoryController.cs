@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Net.Mail;
 
 namespace Backend1.Controllers;
 
@@ -73,5 +74,20 @@ public class InventoryController : Controller
             return StatusCode(500);
 
         return Ok(rv);
+    }
+
+    [HttpPost]
+    [Route("testEmail")]
+    public IActionResult TestEmail()
+    {
+        try
+        {
+            _itemService.SendEmailTest();
+            return Ok("Test email sent successfully!");
+        }
+        catch (SmtpException ex)
+        {
+            return StatusCode(500, $"Failed to send test email: {ex.Message}");
+        }
     }
 }

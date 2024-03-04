@@ -3,7 +3,9 @@ using Backend1.Models;
 using Backend1.Repositories;
 using Backend1.Services;
 using FakeItEasy;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using System.Net.Mail;
 using TestHelpers;
 using Xunit.Abstractions;
 
@@ -191,4 +193,24 @@ public class ItemServiceUnitTests
         
         Assert.Equal(items.Count - 1, rv.Count());
     }
+
+    [Fact]
+    public void TestEmailSending()
+    {
+        // Arrange
+        var repositoryMock = new Mock<IItemRepository>();
+        var loggerMock = new Mock<ILogger<ItemService>>();
+        var smtpClientMock = new Mock<SmtpClient>("smtp.gmail.com", 587);
+        var itemService = new ItemService(repositoryMock.Object, loggerMock.Object);
+
+        // Act
+        itemService.SendEmailTest();
+
+        // Assert
+        smtpClientMock.Verify(
+            client => client.Send(It.IsAny<MailMessage>()),
+            Times.Once
+        );
+    }
+
 }
