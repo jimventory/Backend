@@ -18,8 +18,8 @@ public class InventoryController : Controller
         _itemService = itemService;
     }
     
-    [HttpGet("private")]
-    [EnableCors]
+    [HttpGet]
+    [Route("private")]
     [Authorize]
     public ActionResult PrivateEndpointPlaceholder()
     {
