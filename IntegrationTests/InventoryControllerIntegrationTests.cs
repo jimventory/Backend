@@ -1,21 +1,21 @@
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc.Testing;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Text.Json;
 using Backend1.Models;
 using Newtonsoft.Json;
 using TestHelpers;
+using Xunit.Abstractions;
 
 namespace IntegrationTests;
 
 public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
+    private readonly ITestOutputHelper _output;
 
-    public InventoryControllerIntegrationTests(WebApplicationFactory<Program> factory)
+    public InventoryControllerIntegrationTests(WebApplicationFactory<Program> factory, ITestOutputHelper outputHelper)
     {
         _factory = factory;
+        _output = outputHelper;
     }
 
     [Fact]
@@ -94,10 +94,11 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
     public async Task AuthorizedPrivateEndpointTest()
     {
         var accessToken = await TokenHelper.GetAccessToken();
-        
+
         var client = _factory.CreateClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         var response = await client.GetAsync("api/inventory/private");
+
         response.EnsureSuccessStatusCode();
     }
 }
