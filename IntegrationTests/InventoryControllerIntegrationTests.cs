@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Backend1.Models;
 using Newtonsoft.Json;
@@ -38,7 +37,7 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
             Sales = 0
         };
 
-        var client = _factory.CreateClient();
+        var client = await TokenHelper.ConstructAuthorizedClient(_factory);
 
         // Create
         var json = JsonConvert.SerializeObject(item);
@@ -75,7 +74,7 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
     public async Task GetInventoryTest()
     {
         const int hardCodedBusinessId = 10;
-        var client = _factory.CreateClient();
+        var client = await TokenHelper.ConstructAuthorizedClient(_factory);
 
         var response = await client.GetAsync($"api/inventory/getInventory/{hardCodedBusinessId}");
         response.EnsureSuccessStatusCode();
@@ -93,10 +92,7 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
     [Fact]
     public async Task AuthorizedPrivateEndpointTest()
     {
-        var accessToken = await TokenHelper.GetAccessToken();
-
-        var client = _factory.CreateClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        var client = await TokenHelper.ConstructAuthorizedClient(_factory);
         var response = await client.GetAsync("api/inventory/private");
 
         response.EnsureSuccessStatusCode();

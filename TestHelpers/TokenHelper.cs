@@ -1,9 +1,9 @@
 using Backend1;
-using System.Text;
 using RestSharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using Microsoft.AspNetCore.Mvc.Testing;
+using System.Net.Http.Headers;
 namespace TestHelpers;
 
 public static class TokenHelper
@@ -46,5 +46,18 @@ public static class TokenHelper
             throw new Exception("Could not parse access token.");
         
         return accessToken;
+    }
+
+    public static async Task<HttpClient> ConstructAuthorizedClient(WebApplicationFactory<Program> factory, string? token = null)
+    {
+        // Get token if one was not manually passed in.
+        if (token is null)
+            token = await GetAccessToken();
+
+        // Construct client and set auth.
+        var client = factory.CreateClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        return client;
     }
 }
