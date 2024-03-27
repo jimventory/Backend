@@ -3,6 +3,7 @@ using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace Backend1.Controllers;
 
@@ -65,13 +66,14 @@ public class InventoryController : Controller
     }
 
     [HttpGet]
-    [Route("getInventory/{businessId}")]
-    public ActionResult GetInventory(uint businessId)
+    [Route("getInventory")]
+    public ActionResult GetInventory()
     {
-        var rv = _itemService.GetBusinessInventoryItems(businessId);
+        var rv = _itemService.GetBusinessInventoryItems(User);
 
-        if (rv.IsNullOrEmpty())
-            return StatusCode(500);
+        // Previously, we returned StatusCode 500 if we couldn't find any items.
+        // That is not necessarily an error.  They could just have no items.
+        // So, don't treat it like an error.
 
         return Ok(rv);
     }

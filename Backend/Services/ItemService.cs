@@ -1,5 +1,6 @@
 using Backend1.Abstractions;
 using Backend1.Models;
+using System.Security.Claims;
 
 namespace Backend1.Services;
 
@@ -87,10 +88,11 @@ public class ItemService : IItemService
         return true;
     }
 
-    public IEnumerable<Item> GetBusinessInventoryItems(uint businessId)
+    public IEnumerable<Item> GetBusinessInventoryItems(ClaimsPrincipal user)
     {
         try
         {
+            var businessId = GetBusinessIdFromClaims(user);
             var globalInventory = _repository.GetAll();
             var businessItems = globalInventory.Where((item) => item.BusinessId == businessId);
 
@@ -102,5 +104,27 @@ public class ItemService : IItemService
         }
 
         return Enumerable.Empty<Item>();
+    }
+
+    // Probably should just keep the approach we had prior and use roles/scopes to check if a user can access the business they want.
+    private uint GetBusinessIdFromClaims(ClaimsPrincipal user)
+    {
+        // Get NameIdentifer.
+        var nameIdent = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        if (nameIdent is null)
+            throw new Exception("Could not find NameIdentifier within claims.");
+
+        // Auth0 NameIdentifier should be formatted as auth0|number
+        var identNumString = nameIdent.Split("|")[1];
+        var identNumSubString = identNumString.Substring(identNumString.Length - 8);
+        
+        _logger.LogInformation($"Identity sub lenth is {identNumSubString.Length}");
+
+        var identNum = Convert.ToUInt32(identNumSubString, 16);
+
+        _logger.LogInformation($"Converted Id is: {identNum}");
+
+        return identNum;
     }
 }
