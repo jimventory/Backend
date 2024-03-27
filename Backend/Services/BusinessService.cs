@@ -18,6 +18,7 @@ public class BusinessService : IBusinessService
     {
         try
         {
+            _logger.LogInformation($"Business Id is {business.Id}");
             _repository.Add(business);
         }
         catch (Exception e)

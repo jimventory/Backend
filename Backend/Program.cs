@@ -19,16 +19,16 @@ builder.Services.AddScoped<IBusinessRepository, BusinessRepository>();
 builder.Services.AddScoped<IBusinessService, BusinessService>();
 builder.Services.AddControllers();
 
-// TODO: I think allowing any origin in prod is bad; for dev purposes, I added this.
 builder.Services.AddCors(options =>
 {
-    
-    options.AddPolicy("AllowAnyOrigin", bd =>
-    {
-        bd.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
+    options.AddPolicy(name: "AllowSpecificOrigins",
+            policy =>
+            {
+                policy.WithOrigins("http://localhost:3000",
+                        "https://frontend-brown-gamma-36.vercel.app/")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            });
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.Audience = EnvVarHelper.GetVariable("AUTH0_AUDIENCE");
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            NameClaimType = ClaimTypes.NameIdentifier
+            ValidateAudience = true
         };
     });
 
@@ -48,8 +48,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// TODO: I think allowing any origin in prod is bad; for dev purposes, I added this.
-app.UseCors("AllowAnyOrigin");
+app.UseCors("AllowSpecificOrigins");
 
 app.MapControllers();
 

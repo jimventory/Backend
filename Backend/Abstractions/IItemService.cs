@@ -1,12 +1,13 @@
 using Backend1.Models;
+using System.Security.Claims;
 
 namespace Backend1.Abstractions;
 
 public interface IItemService
 {
-    bool Add(Item item);
-    bool Update(Item item);
-    bool Delete(Item item);
-    bool Delete(uint id);
-    IEnumerable<Item> GetBusinessInventoryItems(uint businessId);
+    bool Add(Item item, ClaimsPrincipal user);
+    bool Update(Item item, ClaimsPrincipal user);
+    bool Delete(Item item, ClaimsPrincipal user);
+    bool Delete(uint id, ClaimsPrincipal user);
+    IEnumerable<Item> GetBusinessInventoryItems(ClaimsPrincipal user);
 }

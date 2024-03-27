@@ -19,3 +19,4 @@
 /TestHelpers/obj/*
 !/TestHelpers/bin/.gitkeep
 !/TestHelpers/obj/.gitkeep
+coverlet.collector.6.0.0/*
