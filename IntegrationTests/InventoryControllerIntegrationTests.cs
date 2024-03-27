@@ -37,7 +37,7 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
             Sales = 0
         };
 
-        var client = await TokenHelper.ConstructAuthorizedClient(_factory);
+        var client = await AuthHelper.ConstructAuthorizedClient(_factory);
 
         // Create
         var json = JsonConvert.SerializeObject(item);
@@ -74,7 +74,7 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
     public async Task GetInventoryTest()
     {
         const int hardCodedBusinessId = 10;
-        var client = await TokenHelper.ConstructAuthorizedClient(_factory);
+        var client = await AuthHelper.ConstructAuthorizedClient(_factory);
 
         var response = await client.GetAsync($"api/inventory/getInventory/{hardCodedBusinessId}");
         response.EnsureSuccessStatusCode();
@@ -92,7 +92,7 @@ public class InventoryControllerIntegrationTests : IClassFixture<WebApplicationF
     [Fact]
     public async Task AuthorizedPrivateEndpointTest()
     {
-        var client = await TokenHelper.ConstructAuthorizedClient(_factory);
+        var client = await AuthHelper.ConstructAuthorizedClient(_factory);
         var response = await client.GetAsync("api/inventory/private");
 
         response.EnsureSuccessStatusCode();
