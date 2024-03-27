@@ -3,12 +3,12 @@ using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 
 namespace Backend1.Controllers;
 
 [ApiController]
 [Route("api/inventory")]
+[Authorize]
 public class InventoryController : Controller
 {
     private readonly IItemService _itemService;
@@ -22,7 +22,6 @@ public class InventoryController : Controller
     
     [HttpGet]
     [Route("private")]
-    [Authorize]
     public ActionResult PrivateEndpointPlaceholder()
     {
         return Ok("This is a private endpoint in the inventory controller.\n");
