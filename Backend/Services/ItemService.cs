@@ -15,10 +15,11 @@ public class ItemService : IItemService
         _logger = logger;
     }
 
-    public bool Add(Item item)
+    public bool Add(Item item, ClaimsPrincipal user)
     {
         try
         {
+            item.BusinessId = GetBusinessIdFromClaims(user);
             _repository.Add(item);
         }
         catch (Exception e)
@@ -30,13 +31,18 @@ public class ItemService : IItemService
         return true;
     }
 
-    public bool Update(Item item)
+    public bool Update(Item item, ClaimsPrincipal user)
     {
         try
         {
             // This call throws an exception if it can't find the item.
             _repository.GetById(item.Id);
             
+            var businessId = GetBusinessIdFromClaims(user);
+
+            if (item.BusinessId != businessId)
+                throw new Exception("You do not have permission to modify items for this business.");
+
             // Item exists, can update.
             
             _repository.Update(item);
@@ -54,10 +60,15 @@ public class ItemService : IItemService
     }
 
     // No reason for this overload to exist, probably will delete in future refactoring if we don't use.
-    public bool Delete(Item item)
+    public bool Delete(Item item, ClaimsPrincipal user)
     {
         try
         {
+            var businessId = GetBusinessIdFromClaims(user);
+            
+            if (businessId != item.BusinessId)
+                throw new Exception("You do not have permission to delete items for this business.");
+
             _repository.Delete(item);
         }
         catch (Exception e)
@@ -69,12 +80,16 @@ public class ItemService : IItemService
         return true;
     }
     
-    public bool Delete(uint id)
+    public bool Delete(uint id, ClaimsPrincipal user)
     {
         try
         {
             // This call throws an exception if it can't find the item.
             var item = _repository.GetById(id);
+            
+            var businessId = GetBusinessIdFromClaims(user);
+            if (businessId != item.BusinessId)
+                throw new Exception("You do not have permission to delete items for this business.");
             
             // We found the item, delete it.
             _repository.Delete(item);
@@ -107,6 +122,8 @@ public class ItemService : IItemService
     }
 
     // Probably should just keep the approach we had prior and use roles/scopes to check if a user can access the business they want.
+    // But for ease of implementation now, I'm opting for this approach.
+    // We can always change in the future.  Since we're not actually going to release this, I don't see any reason to make this more complicated than we actually need it to be.
     private uint GetBusinessIdFromClaims(ClaimsPrincipal user)
     {
         // Get NameIdentifer.

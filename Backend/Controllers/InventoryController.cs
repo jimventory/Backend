@@ -32,7 +32,7 @@ public class InventoryController : Controller
     [Route("add")]
     public ActionResult AddItem([FromBody] Item newItem)
     {
-        var rv = _itemService.Add(newItem);
+        var rv = _itemService.Add(newItem, User);
 
         // Failed to add.
         if (rv == false)
@@ -45,7 +45,7 @@ public class InventoryController : Controller
     [Route("update")]
     public ActionResult UpdateItem([FromBody] Item updateItem)
     {
-        var rv = _itemService.Update(updateItem);
+        var rv = _itemService.Update(updateItem, User);
 
         if (rv == false)
             return StatusCode(500);
@@ -57,7 +57,7 @@ public class InventoryController : Controller
     [Route("remove/{id}")]
     public ActionResult DeleteItem(uint id)
     {
-        var rv = _itemService.Delete(id);
+        var rv = _itemService.Delete(id, User);
 
         if (rv == false)
             return StatusCode(500);
