@@ -1,9 +1,9 @@
 using Backend1.Abstractions;
 using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace Backend1.Controllers;
 
@@ -12,10 +12,12 @@ namespace Backend1.Controllers;
 public class InventoryController : Controller
 {
     private readonly IItemService _itemService;
-    
-    public InventoryController(IItemService itemService)
+    private readonly ILogger _logger;
+
+    public InventoryController(IItemService itemService, ILogger<InventoryController> logger)
     {
         _itemService = itemService;
+        _logger = logger;
     }
     
     [HttpGet]
