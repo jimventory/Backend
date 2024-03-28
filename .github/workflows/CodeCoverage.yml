@@ -1,0 +1,51 @@
+name: CodeCoverage
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Install Coverlet
+      run: dotnet tool install --global coverlet.console
+    - name: Install ReportGenerator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+    - name: Coverlet - Integration Test Code Coverage
+      run: coverlet IntegrationTests/bin/Debug/net8.0/IntegrationTests.dll --target "dotnet" --targetargs "test IntegrationTests --no-build" --format opencover --output "integration"
+    - name: Coverlet - Unit Test Code Coverage
+      run: coverlet UnitTests/bin/Debug/net8.0/UnitTests.dll --target "dotnet" --targetargs "test UnitTests --no-build" --format opencover --output "unit"
+    - name: Coverlet - Functional Test Code Coverage
+      run: coverlet FunctionalTests/bin/Debug/net8.0/FunctionalTests.dll --target "dotnet" --targetargs "test FunctionalTests --no-build" --format opencover --output "functional"
+    - name: ReportGenerator - Generate Report
+      run: reportgenerator "-reports:functional.opencover.xml;integration.opencover.xml;unit.opencover.xml" "-targetdir:coveragereport" -reporttypes:Html
+    - name: Store Coverage Report
+      run: cp -r coveragereport ~
+    - name: Make Temp Directory
+      run: mkdir ~/tempDirectory
+    - name: Change Directory to tempDirectory
+      run: cd ~/tempDirectory
+    - name: Checkout Code Coverage Branch
+      uses: actions/checkout@v4.1.1
+      with:
+        ref: 'code-coverage'
+    - name: Copy Over Coverage Report
+      run: cp ~/coveragereport/* .
+    - name: Push Changes to code-coverage
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Automated Change - Updated Coverage Report
+            
+            
