@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Security.Principal;
 namespace TestHelpers;
 
 public static class AuthHelper
@@ -46,6 +48,19 @@ public static class AuthHelper
             throw new Exception("Could not parse access token.");
         
         return accessToken;
+    }
+
+    public static ClaimsPrincipal GetClaims(string identityString = "TestUser", string nameIdentifier = "0000000A")
+    {
+        var identity = new GenericIdentity(identityString);
+        var claims = new List<Claim>();
+
+        claims.Add(new Claim(ClaimTypes.NameIdentifier.ToString(), nameIdentifier));
+
+        var claimsIdentity = new ClaimsIdentity(identity, claims);
+
+        var rv = new ClaimsPrincipal(claimsIdentity);
+        return rv;
     }
 
     public static async Task<HttpClient> ConstructAuthorizedClient(WebApplicationFactory<Program> factory, string? token = null)
