@@ -50,12 +50,13 @@ public static class AuthHelper
         return accessToken;
     }
 
-    public static ClaimsPrincipal GetClaims(string identityString = "TestUser", string nameIdentifier = "auth0|11110000000A")
+    public static ClaimsPrincipal GetClaims(string identityString = "TestUser", string? nameIdentifier = "auth0|11110000000A")
     {
         var identity = new GenericIdentity(identityString);
         var claims = new List<Claim>();
 
-        claims.Add(new Claim(ClaimTypes.NameIdentifier.ToString(), nameIdentifier));
+        if (nameIdentifier is not null)
+            claims.Add(new Claim(ClaimTypes.NameIdentifier.ToString(), nameIdentifier));
 
         var claimsIdentity = new ClaimsIdentity(identity, claims);
 

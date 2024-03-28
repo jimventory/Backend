@@ -198,6 +198,15 @@ public class ItemServiceUnitTests
     }
 
     [Fact]
+    public void TestGetBusinessInvetoryException()
+    {
+        var fakeItemRepo = A.Fake<IItemRepository>();
+
+        A.CallTo(() => fakeItemRepo.GetAll())
+            .Throws(new Exception("Failed to get all items."));
+    }
+
+    [Fact]
     public void TestGetBusinessIdFromClaims()
     {
         var sut = new ItemService(A.Fake<IItemRepository>(), NullLogger<ItemService>.Instance);
@@ -205,5 +214,14 @@ public class ItemServiceUnitTests
 
         // The default ClaimsPrincipal returned by our AuthHelper should have a NameIdentifier that returns 10, for business Id 10.
         Assert.Equal((uint)10, rv);
+    }
+
+    [Fact]
+    public void TestGetBusinessIdFromClaimsThrowsOnNullNameIdentifier()
+    {
+        var sut = new ItemService(A.Fake<IItemRepository>(), NullLogger<ItemService>.Instance);
+        var claim = AuthHelper.GetClaims(nameIdentifier: null);
+
+        Assert.Throws<Exception>(() => sut.GetBusinessIdFromClaims(claim));
     }
 }
