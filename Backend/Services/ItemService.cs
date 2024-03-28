@@ -124,7 +124,8 @@ public class ItemService : IItemService
     // Probably should just keep the approach we had prior and use roles/scopes to check if a user can access the business they want.
     // But for ease of implementation now, I'm opting for this approach.
     // We can always change in the future.  Since we're not actually going to release this, I don't see any reason to make this more complicated than we actually need it to be.
-    private uint GetBusinessIdFromClaims(ClaimsPrincipal user)
+    // For ease assuring that this method works as expected, I'm marking it public so I can unit test it.
+    public uint GetBusinessIdFromClaims(ClaimsPrincipal user)
     {
         // Get NameIdentifer.
         var nameIdent = user.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
