@@ -82,7 +82,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestUpdateSuccess()
     {
-        var item = ItemHelper.GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem(busId: 10);
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Update(item))
@@ -144,7 +144,7 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteItemSuccess()
     {
-        var item = ItemHelper.GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem(busId: 10);
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Delete(item))
@@ -158,15 +158,18 @@ public class ItemServiceUnitTests
     [Fact]
     public void TestDeleteByIdSuccess()
     {
-        var item = ItemHelper.GetBoilerplateItem();
+        var item = ItemHelper.GetBoilerplateItem(busId: 10);
         var fakeItemRepo = A.Fake<IItemRepository>();
 
         A.CallTo(() => fakeItemRepo.Delete(item))
             .DoesNothing();
 
+        A.CallTo(() => fakeItemRepo.GetById(item.Id))
+            .Returns(item);
+
         var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
         
-        Assert.True(sut.Delete(0, _claims));
+        Assert.True(sut.Delete(item.Id, _claims));
     }
 
     [Fact]
@@ -192,5 +195,15 @@ public class ItemServiceUnitTests
         var rv = sut.GetBusinessInventoryItems(_claims);
         
         Assert.Equal(items.Count - 1, rv.Count());
+    }
+
+    [Fact]
+    public void TestGetBusinessIdFromClaims()
+    {
+        var sut = new ItemService(A.Fake<IItemRepository>(), NullLogger<ItemService>.Instance);
+        var rv = sut.GetBusinessIdFromClaims(_claims);
+
+        // The default ClaimsPrincipal returned by our AuthHelper should have a NameIdentifier that returns 10, for business Id 10.
+        Assert.Equal((uint)10, rv);
     }
 }
