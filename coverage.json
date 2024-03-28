@@ -1,0 +1,1483 @@
+{
+  "Backend.dll": {
+    "/Users/noah/Code/Backend/Backend/Program.cs": {
+      "Program": {
+        "System.Void Program::<Main>$(System.String[])": {
+          "Lines": {
+            "10": 1,
+            "12": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 2,
+            "32": 2,
+            "34": 1,
+            "35": 1,
+            "36": 1,
+            "37": 1,
+            "38": 1,
+            "39": 1,
+            "40": 1,
+            "41": 1,
+            "42": 1,
+            "43": 2,
+            "45": 1,
+            "47": 1,
+            "48": 1,
+            "49": 1,
+            "51": 1,
+            "53": 1,
+            "55": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/EnvVarHelper.cs": {
+      "Backend1.EnvVarHelper": {
+        "System.String Backend1.EnvVarHelper::GetVariable(System.String)": {
+          "Lines": {
+            "6": 5,
+            "7": 5,
+            "8": 5,
+            "9": 5
+          },
+          "Branches": [
+            {
+              "Line": 7,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 7,
+              "Offset": 8,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Services/BusinessService.cs": {
+      "Backend1.Services.BusinessService": {
+        "System.Boolean Backend1.Services.BusinessService::Add(Backend1.Models.Business)": {
+          "Lines": {
+            "18": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Services.BusinessService::.ctor(Backend1.Abstractions.IBusinessRepository,Microsoft.Extensions.Logging.ILogger`1<Backend1.Services.BusinessService>)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Services/ItemService.cs": {
+      "Backend1.Services.ItemService": {
+        "System.Boolean Backend1.Services.ItemService::Add(Backend1.Models.Item,System.Security.Claims.ClaimsPrincipal)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Backend1.Services.ItemService::Update(Backend1.Models.Item,System.Security.Claims.ClaimsPrincipal)": {
+          "Lines": {
+            "35": 0,
+            "37": 0,
+            "39": 0,
+            "41": 0,
+            "43": 0,
+            "44": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "55": 0,
+            "56": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 42,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean Backend1.Services.ItemService::Delete(Backend1.Models.Item,System.Security.Claims.ClaimsPrincipal)": {
+          "Lines": {
+            "64": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "70": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "80": 0,
+            "81": 0
+          },
+          "Branches": [
+            {
+              "Line": 69,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 24,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean Backend1.Services.ItemService::Delete(System.UInt32,System.Security.Claims.ClaimsPrincipal)": {
+          "Lines": {
+            "84": 0,
+            "86": 0,
+            "88": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "103": 0,
+            "104": 0
+          },
+          "Branches": [
+            {
+              "Line": 91,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 37,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<Backend1.Models.Item> Backend1.Services.ItemService::GetBusinessInventoryItems(System.Security.Claims.ClaimsPrincipal)": {
+          "Lines": {
+            "107": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "121": 0,
+            "122": 0
+          },
+          "Branches": []
+        },
+        "System.UInt32 Backend1.Services.ItemService::GetBusinessIdFromClaims(System.Security.Claims.ClaimsPrincipal)": {
+          "Lines": {
+            "128": 0,
+            "130": 0,
+            "132": 0,
+            "133": 0,
+            "136": 0,
+            "137": 0,
+            "139": 0,
+            "141": 0,
+            "143": 0,
+            "145": 0,
+            "146": 0
+          },
+          "Branches": [
+            {
+              "Line": 130,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 130,
+              "Offset": 44,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 132,
+              "Offset": 64,
+              "EndOffset": 66,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 132,
+              "Offset": 64,
+              "EndOffset": 77,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Backend1.Services.ItemService::.ctor(Backend1.Abstractions.IItemRepository,Microsoft.Extensions.Logging.ILogger`1<Backend1.Services.ItemService>)": {
+          "Lines": {
+            "12": 1,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Repositories/BusinessRepository.cs": {
+      "Backend1.Repositories.BusinessRepository": {
+        "Backend1.Models.Business Backend1.Repositories.BusinessRepository::GetById(System.UInt32)": {
+          "Lines": {
+            "17": 3,
+            "18": 3,
+            "19": 2
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 18,
+              "Offset": 33,
+              "EndOffset": 94,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<Backend1.Models.Business> Backend1.Repositories.BusinessRepository::GetAll()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.BusinessRepository::Add(Backend1.Models.Business)": {
+          "Lines": {
+            "27": 4,
+            "28": 4,
+            "29": 4,
+            "30": 4
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.BusinessRepository::Update(Backend1.Models.Business)": {
+          "Lines": {
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "36": 1,
+            "37": 1
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.BusinessRepository::Delete(Backend1.Models.Business)": {
+          "Lines": {
+            "40": 1,
+            "41": 1,
+            "42": 1,
+            "43": 1
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.BusinessRepository::.ctor(Backend1.Data.BusinessContext)": {
+          "Lines": {
+            "11": 5,
+            "12": 5,
+            "13": 5,
+            "14": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Repositories/ItemRepository.cs": {
+      "Backend1.Repositories.ItemRepository": {
+        "Backend1.Models.Item Backend1.Repositories.ItemRepository::GetById(System.UInt32)": {
+          "Lines": {
+            "18": 3,
+            "19": 3,
+            "20": 2
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 19,
+              "Offset": 33,
+              "EndOffset": 94,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<Backend1.Models.Item> Backend1.Repositories.ItemRepository::GetAll()": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.ItemRepository::Add(Backend1.Models.Item)": {
+          "Lines": {
+            "28": 4,
+            "29": 4,
+            "30": 4,
+            "31": 4
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.ItemRepository::Update(Backend1.Models.Item)": {
+          "Lines": {
+            "34": 1,
+            "35": 1,
+            "36": 1,
+            "37": 1,
+            "38": 1
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.ItemRepository::Delete(Backend1.Models.Item)": {
+          "Lines": {
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 1
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Repositories.ItemRepository::.ctor(Backend1.Data.InventoryContext)": {
+          "Lines": {
+            "12": 6,
+            "13": 6,
+            "14": 6,
+            "15": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Models/Business.cs": {
+      "Backend1.Models.Business": {
+        "System.UInt32 Backend1.Models.Business::get_Id()": {
+          "Lines": {
+            "10": 17
+          },
+          "Branches": []
+        },
+        "System.String Backend1.Models.Business::get_Name()": {
+          "Lines": {
+            "11": 10
+          },
+          "Branches": []
+        },
+        "System.String Backend1.Models.Business::get_Location()": {
+          "Lines": {
+            "12": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Models/Item.cs": {
+      "Backend1.Models.Item": {
+        "System.UInt32 Backend1.Models.Item::get_BusinessId()": {
+          "Lines": {
+            "5": 5
+          },
+          "Branches": []
+        },
+        "System.UInt32 Backend1.Models.Item::get_Id()": {
+          "Lines": {
+            "6": 17
+          },
+          "Branches": []
+        },
+        "System.UInt32 Backend1.Models.Item::get_Quantity()": {
+          "Lines": {
+            "7": 5
+          },
+          "Branches": []
+        },
+        "System.Double Backend1.Models.Item::get_Price()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String Backend1.Models.Item::get_Name()": {
+          "Lines": {
+            "9": 15
+          },
+          "Branches": []
+        },
+        "System.UInt32 Backend1.Models.Item::get_Sales()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.UInt32 Backend1.Models.Item::get_LowStockNotification()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String Backend1.Models.Item::get_About()": {
+          "Lines": {
+            "12": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/20231229193244_InitialCreate.cs": {
+      "Backend1.Migrations.InitialCreate": {
+        "System.Void Backend1.Migrations.InitialCreate::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Migrations.InitialCreate::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/20231229193244_InitialCreate.Designer.cs": {
+      "Backend1.Migrations.InitialCreate": {
+        "System.Void Backend1.Migrations.InitialCreate::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/20240201235521_BusinessModel.cs": {
+      "Backend1.Migrations.BusinessModel": {
+        "System.Void Backend1.Migrations.BusinessModel::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "12": 0,
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Migrations.BusinessModel::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "18": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/20240201235521_BusinessModel.Designer.cs": {
+      "Backend1.Migrations.BusinessModel": {
+        "System.Void Backend1.Migrations.BusinessModel::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/20240229201723_30-sales-counter.cs": {
+      "Backend1.Migrations._30salescounter": {
+        "System.Void Backend1.Migrations._30salescounter::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Migrations._30salescounter::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/20240229201723_30-sales-counter.Designer.cs": {
+      "Backend1.Migrations._30salescounter": {
+        "System.Void Backend1.Migrations._30salescounter::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "56": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/InventoryContextModelSnapshot.cs": {
+      "Backend1.Migrations.InventoryContextModelSnapshot": {
+        "System.Void Backend1.Migrations.InventoryContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/20240202000011_BusinessContextAdded.cs": {
+      "Backend1.Migrations.Business.BusinessContextAdded": {
+        "System.Void Backend1.Migrations.Business.BusinessContextAdded::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Migrations.Business.BusinessContextAdded::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/20240202000011_BusinessContextAdded.Designer.cs": {
+      "Backend1.Migrations.Business.BusinessContextAdded": {
+        "System.Void Backend1.Migrations.Business.BusinessContextAdded::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/20240202014210_BusinessContextFixed.cs": {
+      "Backend1.Migrations.Business.BusinessContextFixed": {
+        "System.Void Backend1.Migrations.Business.BusinessContextFixed::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Migrations.Business.BusinessContextFixed::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/20240202014210_BusinessContextFixed.Designer.cs": {
+      "Backend1.Migrations.Business.BusinessContextFixed": {
+        "System.Void Backend1.Migrations.Business.BusinessContextFixed::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/20240202131615_BusinessContextAutoInc.cs": {
+      "Backend1.Migrations.Business.BusinessContextAutoInc": {
+        "System.Void Backend1.Migrations.Business.BusinessContextAutoInc::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "12": 0,
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Migrations.Business.BusinessContextAutoInc::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "18": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/20240202131615_BusinessContextAutoInc.Designer.cs": {
+      "Backend1.Migrations.Business.BusinessContextAutoInc": {
+        "System.Void Backend1.Migrations.Business.BusinessContextAutoInc::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Migrations/Business/BusinessContextModelSnapshot.cs": {
+      "Backend1.Migrations.Business.BusinessContextModelSnapshot": {
+        "System.Void Backend1.Migrations.Business.BusinessContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Data/BusinessContext.cs": {
+      "Backend1.Data.BusinessContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<Backend1.Models.Business> Backend1.Data.BusinessContext::get_Businesses()": {
+          "Lines": {
+            "7": 20
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Data.BusinessContext::OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)": {
+          "Lines": {
+            "15": 5,
+            "16": 5,
+            "17": 0,
+            "18": 5
+          },
+          "Branches": [
+            {
+              "Line": 16,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 12,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Void Backend1.Data.BusinessContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Backend1.Data.BusinessContext>)": {
+          "Lines": {
+            "9": 5,
+            "10": 5,
+            "12": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Data/InventoryContext.cs": {
+      "Backend1.Data.InventoryContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<Backend1.Models.Item> Backend1.Data.InventoryContext::get_Items()": {
+          "Lines": {
+            "7": 21
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Data.InventoryContext::OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)": {
+          "Lines": {
+            "15": 5,
+            "16": 5,
+            "17": 0,
+            "18": 5
+          },
+          "Branches": [
+            {
+              "Line": 16,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 12,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.Void Backend1.Data.InventoryContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Backend1.Data.InventoryContext>)": {
+          "Lines": {
+            "9": 6,
+            "10": 6,
+            "12": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Controllers/BusinessController.cs": {
+      "Backend1.Controllers.BusinessController": {
+        "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.BusinessController::Register(Backend1.Models.Business)": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "24": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 20,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Backend1.Controllers.BusinessController::.ctor(Backend1.Abstractions.IBusinessService)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/Backend/Controllers/InventoryController.cs": {
+      "Backend1.Controllers.InventoryController": {
+        "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.InventoryController::PrivateEndpointPlaceholder()": {
+          "Lines": {
+            "27": 1,
+            "28": 1,
+            "29": 1
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.InventoryController::AddItem(Backend1.Models.Item)": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "38": 0,
+            "39": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 26,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.InventoryController::UpdateItem(Backend1.Models.Item)": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0,
+            "54": 0
+          },
+          "Branches": [
+            {
+              "Line": 50,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 50,
+              "Offset": 26,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.InventoryController::DeleteItem(System.UInt32)": {
+          "Lines": {
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0
+          },
+          "Branches": [
+            {
+              "Line": 62,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 26,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.InventoryController::GetInventory()": {
+          "Lines": {
+            "71": 0,
+            "72": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": []
+        },
+        "System.Void Backend1.Controllers.InventoryController::.ctor(Backend1.Abstractions.IItemService,Microsoft.Extensions.Logging.ILogger`1<Backend1.Controllers.InventoryController>)": {
+          "Lines": {
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1,
+            "22": 1
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "TestHelpers.dll": {
+    "/Users/noah/Code/Backend/TestHelpers/AuthHelper.cs": {
+      "TestHelpers.AuthHelper/<ConstructAuthorizedClient>d__1": {
+        "System.Void TestHelpers.AuthHelper/<ConstructAuthorizedClient>d__1::MoveNext()": {
+          "Lines": {
+            "52": 1,
+            "54": 1,
+            "55": 1,
+            "58": 1,
+            "59": 1,
+            "61": 1,
+            "62": 1
+          },
+          "Branches": [
+            {
+              "Line": 54,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 54,
+              "Offset": 26,
+              "EndOffset": 148,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "TestHelpers.AuthHelper/<GetAccessToken>d__0": {
+        "System.Void TestHelpers.AuthHelper/<GetAccessToken>d__0::MoveNext()": {
+          "Lines": {
+            "12": 1,
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "21": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "30": 1,
+            "31": 0,
+            "33": 1,
+            "35": 1,
+            "36": 0,
+            "38": 1,
+            "40": 1,
+            "41": 0,
+            "43": 1,
+            "45": 1,
+            "46": 0,
+            "48": 1,
+            "49": 1
+          },
+          "Branches": [
+            {
+              "Line": 30,
+              "Offset": 405,
+              "EndOffset": 407,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 405,
+              "EndOffset": 418,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 448,
+              "EndOffset": 450,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 35,
+              "Offset": 448,
+              "EndOffset": 461,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 38,
+              "Offset": 474,
+              "EndOffset": 476,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 474,
+              "EndOffset": 488,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 516,
+              "EndOffset": 518,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 516,
+              "EndOffset": 529,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 43,
+              "Offset": 547,
+              "EndOffset": 549,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 547,
+              "EndOffset": 553,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 1
+            },
+            {
+              "Line": 45,
+              "Offset": 576,
+              "EndOffset": 578,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 576,
+              "EndOffset": 589,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/TestHelpers/BusinessHelper.cs": {
+      "TestHelpers.BusinessHelper": {
+        "Backend1.Models.Business TestHelpers.BusinessHelper::GetBoilerplateBusiness()": {
+          "Lines": {
+            "8": 5,
+            "9": 5,
+            "10": 5,
+            "11": 5,
+            "12": 5,
+            "13": 5,
+            "14": 5,
+            "15": 5
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/noah/Code/Backend/TestHelpers/ItemHelper.cs": {
+      "TestHelpers.ItemHelper": {
+        "Backend1.Models.Item TestHelpers.ItemHelper::GetBoilerplateItem()": {
+          "Lines": {
+            "8": 5,
+            "9": 5,
+            "10": 5,
+            "11": 5,
+            "12": 5,
+            "13": 5,
+            "14": 5,
+            "15": 5,
+            "16": 5
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
