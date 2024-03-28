@@ -1,26 +1,28 @@
 using Backend1.Abstractions;
 using Backend1.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace Backend1.Controllers;
 
 [ApiController]
 [Route("api/inventory")]
+[Authorize]
 public class InventoryController : Controller
 {
     private readonly IItemService _itemService;
-    
-    public InventoryController(IItemService itemService)
+    private readonly ILogger _logger;
+
+    public InventoryController(IItemService itemService, ILogger<InventoryController> logger)
     {
         _itemService = itemService;
+        _logger = logger;
     }
     
-    [HttpGet("private")]
-    [EnableCors]
-    [Authorize]
+    [HttpGet]
+    [Route("private")]
     public ActionResult PrivateEndpointPlaceholder()
     {
         return Ok("This is a private endpoint in the inventory controller.\n");
@@ -30,7 +32,7 @@ public class InventoryController : Controller
     [Route("add")]
     public ActionResult AddItem([FromBody] Item newItem)
     {
-        var rv = _itemService.Add(newItem);
+        var rv = _itemService.Add(newItem, User);
 
         // Failed to add.
         if (rv == false)
@@ -43,7 +45,7 @@ public class InventoryController : Controller
     [Route("update")]
     public ActionResult UpdateItem([FromBody] Item updateItem)
     {
-        var rv = _itemService.Update(updateItem);
+        var rv = _itemService.Update(updateItem, User);
 
         if (rv == false)
             return StatusCode(500);
@@ -55,7 +57,7 @@ public class InventoryController : Controller
     [Route("remove/{id}")]
     public ActionResult DeleteItem(uint id)
     {
-        var rv = _itemService.Delete(id);
+        var rv = _itemService.Delete(id, User);
 
         if (rv == false)
             return StatusCode(500);
@@ -64,13 +66,14 @@ public class InventoryController : Controller
     }
 
     [HttpGet]
-    [Route("getInventory/{businessId}")]
-    public ActionResult GetInventory(uint businessId)
+    [Route("getInventory")]
+    public ActionResult GetInventory()
     {
-        var rv = _itemService.GetBusinessInventoryItems(businessId);
+        var rv = _itemService.GetBusinessInventoryItems(User);
 
-        if (rv.IsNullOrEmpty())
-            return StatusCode(500);
+        // Previously, we returned StatusCode 500 if we couldn't find any items.
+        // That is not necessarily an error.  They could just have no items.
+        // So, don't treat it like an error.
 
         return Ok(rv);
     }
