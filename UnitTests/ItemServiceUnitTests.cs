@@ -210,6 +210,10 @@ public class ItemServiceUnitTests
 
         A.CallTo(() => fakeItemRepo.GetAll())
             .Throws(new Exception("Failed to get all items."));
+
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
+        var rv = sut.GetBusinessInventoryItems(_claims);
+        Assert.Empty(rv);
     }
 
 }
