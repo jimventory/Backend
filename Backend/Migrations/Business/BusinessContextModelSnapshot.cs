@@ -2,14 +2,13 @@
 using Backend1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-
+using System.Diagnostics.CodeAnalysis; 
 #nullable disable
 
 namespace Backend1.Migrations.Business
 {
     [DbContext(typeof(BusinessContext))]
+    [ExcludeFromCodeCoverage]
     partial class BusinessContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
