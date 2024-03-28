@@ -111,7 +111,7 @@ public class ItemRepositoryIntegrationTests
     public void TestGetAllEmpty()
     {
         var options = new DbContextOptionsBuilder<InventoryContext>()
-            .UseInMemoryDatabase(databaseName: "GetAllEmptyTestDatabase")
+            .UseInMemoryDatabase(databaseName: "ItemRepositoryGetAllEmptyTestDatabase")
             .Options;
 
         using var db = new InventoryContext(options);
@@ -126,7 +126,7 @@ public class ItemRepositoryIntegrationTests
     public void TestGetAllWithItems()
     {
         var options = new DbContextOptionsBuilder<InventoryContext>()
-            .UseInMemoryDatabase(databaseName: "GetAllWithItemsTestDatabase")
+            .UseInMemoryDatabase(databaseName: "ItemRepositoryGetAllWithItemsTestDatabase")
             .Options;
 
         using var db = new InventoryContext(options);
