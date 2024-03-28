@@ -53,7 +53,7 @@ jobs:
     - name: Git Add
       run: git add .
     - name: Git Commit
-      run: git commit -m "Automated: New Coverage Report"
+      run: git commit -m "Automated New Coverage Report"
     - name: Git Push
       run: git push
             
