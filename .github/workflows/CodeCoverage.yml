@@ -50,11 +50,17 @@ jobs:
       run: cp ~/coveragereport/* code-coverage/
     - name: CD Into code-coverage
       run: cd code-coverage
+    - name: Set up Git
+      run: |
+        git config --global user.email "noahshoap@gmail.com"
+        git config --global user.name "Noah Shoap"
     - name: Git Add
       run: git add .
     - name: Git Commit
       run: git commit -m "Automated New Coverage Report"
-    - name: Git Push
-      run: git push
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
             
             
