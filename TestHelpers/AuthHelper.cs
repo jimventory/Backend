@@ -50,7 +50,7 @@ public static class AuthHelper
         return accessToken;
     }
 
-    public static ClaimsPrincipal GetClaims(string identityString = "TestUser", string nameIdentifier = "0000000A")
+    public static ClaimsPrincipal GetClaims(string identityString = "TestUser", string nameIdentifier = "auth0|11110000000A")
     {
         var identity = new GenericIdentity(identityString);
         var claims = new List<Claim>();
