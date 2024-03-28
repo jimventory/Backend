@@ -13,11 +13,17 @@ public class ItemServiceUnitTests
 {
     private readonly ITestOutputHelper _outputHelper;
     private readonly ClaimsPrincipal _claims;
+    private IUserBusinessIdResolver _fakeResolver;
 
     public ItemServiceUnitTests(ITestOutputHelper testOutputHelper)
     {
         _outputHelper = testOutputHelper;
         _claims = AuthHelper.GetClaims();
+       
+        // Create a ClaimsResolver that assumes the businessId is 10.
+        _fakeResolver = A.Fake<IUserBusinessIdResolver>();
+        A.CallTo(() => _fakeResolver.GetBusinessIdFromClaimsPrincipal(A<ClaimsPrincipal>.Ignored))
+            .Returns((uint)10);
     }
     
     [Fact]
@@ -29,7 +35,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Add(item))
             .Throws(new Exception("AddException"));
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         Assert.False(sut.Add(item, _claims));
     }
@@ -43,7 +49,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Add(item))
             .DoesNothing();
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
         
         Assert.True(sut.Add(item, _claims));
     }
@@ -60,7 +66,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Update(item))
             .DoesNothing();
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         Assert.False(sut.Update(item, _claims));      
     }
@@ -74,7 +80,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Update(item))
             .Throws(new Exception("UpdateException"));
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         Assert.False(sut.Update(item, _claims));  
     }
@@ -88,7 +94,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Update(item))
             .DoesNothing();
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
        
         Assert.True(sut.Update(item, _claims));
     }
@@ -102,7 +108,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Delete(item))
             .Throws(new Exception("DeleteItemException"));
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         Assert.False(sut.Delete(item, _claims));  
     }
@@ -119,7 +125,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Delete(item))
             .DoesNothing();
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         Assert.False(sut.Delete(item.Id, _claims));  
     }
@@ -136,7 +142,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Delete(item))
             .Throws(new Exception("DeleteItemException"));
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         Assert.False(sut.Delete(item.Id, _claims));  
     }
@@ -150,7 +156,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.Delete(item))
             .DoesNothing();
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
         
         Assert.True(sut.Delete(item, _claims));
     }
@@ -167,7 +173,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.GetById(item.Id))
             .Returns(item);
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
         
         Assert.True(sut.Delete(item.Id, _claims));
     }
@@ -190,7 +196,7 @@ public class ItemServiceUnitTests
         A.CallTo(() => fakeItemRepo.GetAll())
             .Returns(items);
 
-        var sut = new ItemService(fakeItemRepo, NullLogger<ItemService>.Instance);
+        var sut = new ItemService(fakeItemRepo, _fakeResolver, NullLogger<ItemService>.Instance);
 
         var rv = sut.GetBusinessInventoryItems(_claims);
         
@@ -206,22 +212,4 @@ public class ItemServiceUnitTests
             .Throws(new Exception("Failed to get all items."));
     }
 
-    [Fact]
-    public void TestGetBusinessIdFromClaims()
-    {
-        var sut = new ItemService(A.Fake<IItemRepository>(), NullLogger<ItemService>.Instance);
-        var rv = sut.GetBusinessIdFromClaims(_claims);
-
-        // The default ClaimsPrincipal returned by our AuthHelper should have a NameIdentifier that returns 10, for business Id 10.
-        Assert.Equal((uint)10, rv);
-    }
-
-    [Fact]
-    public void TestGetBusinessIdFromClaimsThrowsOnNullNameIdentifier()
-    {
-        var sut = new ItemService(A.Fake<IItemRepository>(), NullLogger<ItemService>.Instance);
-        var claim = AuthHelper.GetClaims(nameIdentifier: null);
-
-        Assert.Throws<Exception>(() => sut.GetBusinessIdFromClaims(claim));
-    }
 }
