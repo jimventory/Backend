@@ -16,7 +16,8 @@ jobs:
       AUTH0_CLIENTID: ${{ secrets.AUTH0_CLIENTID }}
       AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
       SQL_CONN_STRING: ${{ secrets.SQL_CONN_STRING }}
-      
+      PAT: ${{ secrets.PAT }}
+
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
@@ -45,6 +46,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: 'code-coverage'
+        token: ${{ secrets.PAT }}
     - name: Set up Git
       run: |
         git config --global user.email "noahshoap@gmail.com"
@@ -56,8 +58,6 @@ jobs:
     - name: Git Commit
       run: git commit -m "Automated New Coverage Report"
     - name: Git Push
-      env:
-        PAT: ${{ secrets.PAT }}
       run: git push
             
             
