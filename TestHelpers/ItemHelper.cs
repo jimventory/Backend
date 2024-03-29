@@ -1,7 +1,9 @@
 ﻿using Backend1.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TestHelpers;
 
+[ExcludeFromCodeCoverage]
 public static class ItemHelper
 {
     public static Item GetBoilerplateItem(uint? busId = null, uint? id = null, uint? quantity = null, uint? price = null, string? name = null,

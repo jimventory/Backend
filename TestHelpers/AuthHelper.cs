@@ -7,9 +7,11 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.IdentityModel.Tokens.Jwt;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Logging.Abstractions;
 namespace TestHelpers;
 
+[ExcludeFromCodeCoverage]
 public static class AuthHelper
 {
     public static async Task<string> GetAccessToken()
