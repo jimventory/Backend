@@ -10,8 +10,8 @@ namespace UnitTests;
 public class BusinessControllerUnitTests
 {
     private readonly ITestOutputHelper _outputHelper;
-    private IBusinessService _goodBusinessService;
-    private IBusinessService _badBusinessService;
+    private IBusinessService? _goodBusinessService;
+    private IBusinessService? _badBusinessService;
     private BusinessController _goodController;
     private BusinessController _badController;
 
@@ -21,8 +21,8 @@ public class BusinessControllerUnitTests
 
         SetupFakes();
 
-        _goodController = new BusinessController(_goodBusinessService);
-        _badController = new BusinessController(_badBusinessService);
+        _goodController = new BusinessController(_goodBusinessService!);
+        _badController = new BusinessController(_badBusinessService!);
     }
 
     [Fact]

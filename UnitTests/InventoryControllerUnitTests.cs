@@ -12,9 +12,9 @@ namespace UnitTests;
 public class InventoryControllerUnitTests
 {
     private readonly ITestOutputHelper _outputHelper;
-    private IItemService _goodItemService;
-    private IItemService _badItemService;
-    private NullLogger<InventoryController> _fakeLogger;
+    private IItemService? _goodItemService;
+    private IItemService? _badItemService;
+    private NullLogger<InventoryController>? _fakeLogger;
     private InventoryController _goodController;
     private InventoryController _badController;
 
@@ -24,8 +24,8 @@ public class InventoryControllerUnitTests
 
         SetupFakes();
 
-        _goodController = new InventoryController(_goodItemService, _fakeLogger);
-        _badController = new InventoryController(_badItemService, _fakeLogger);
+        _goodController = new InventoryController(_goodItemService!, _fakeLogger!);
+        _badController = new InventoryController(_badItemService!, _fakeLogger!);
     }
 
     [Fact]
