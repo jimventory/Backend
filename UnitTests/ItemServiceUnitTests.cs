@@ -204,7 +204,7 @@ public class ItemServiceUnitTests
     }
 
     [Fact]
-    public void TestGetBusinessInvetoryException()
+    public void TestGetBusinessInventoryException()
     {
         var fakeItemRepo = A.Fake<IItemRepository>();
 
