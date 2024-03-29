@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Security.Principal;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Logging.Abstractions;
 namespace TestHelpers;
 
 public static class AuthHelper
@@ -75,5 +77,31 @@ public static class AuthHelper
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         return client;
+    }
+
+    // I wrote this helper but decided to instead just unit test most controller endpoints.
+    // I'm going to keep this here for now, though.
+    public static async Task<uint> GetBusinessIdFromToken(string? token = null)
+    {
+        if (token is null)
+            token = await GetAccessToken();
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+
+        var accessToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+        if (accessToken is null)
+            throw new Exception("Failed to parse access token string.");
+
+        var nameIdentifier = accessToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        if (nameIdentifier is null)
+            throw new Exception("Access token did not have ClaimType matching NameIdentifier");
+
+        var claimsPrincial = GetClaims(nameIdentifier: nameIdentifier);
+
+        var resolver = new UserBusinessIdResolver(NullLogger<UserBusinessIdResolver>.Instance);
+
+        return resolver.GetBusinessIdFromClaimsPrincipal(claimsPrincial);
     }
 }
