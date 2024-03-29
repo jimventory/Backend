@@ -4,7 +4,7 @@ using TestHelpers;
 
 namespace UnitTests;
 
-public class UserBusinessIdResolverTests
+public class UserBusinessIdResolverUnitTests
 {
     [Fact]
     public void TestGetBusinessIdFromClaims()
