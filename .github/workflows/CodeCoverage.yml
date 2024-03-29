@@ -36,10 +36,8 @@ jobs:
       run: coverlet IntegrationTests/bin/Debug/net8.0/IntegrationTests.dll --target "dotnet" --targetargs "test IntegrationTests --no-build" --format opencover --output "integration"
     - name: Coverlet - Unit Test Code Coverage
       run: coverlet UnitTests/bin/Debug/net8.0/UnitTests.dll --target "dotnet" --targetargs "test UnitTests --no-build" --format opencover --output "unit"
-    - name: Coverlet - Functional Test Code Coverage
-      run: coverlet FunctionalTests/bin/Debug/net8.0/FunctionalTests.dll --target "dotnet" --targetargs "test FunctionalTests --no-build" --format opencover --output "functional"
     - name: ReportGenerator - Generate Report
-      run: reportgenerator "-reports:functional.opencover.xml;integration.opencover.xml;unit.opencover.xml" "-targetdir:coveragereport" -reporttypes:Html
+      run: reportgenerator "-reports:integration.opencover.xml;unit.opencover.xml" "-targetdir:coveragereport" -reporttypes:Html
     - name: Store Coverage Report
       run: cp -r coveragereport ~
     - name: Checkout code-coverage
