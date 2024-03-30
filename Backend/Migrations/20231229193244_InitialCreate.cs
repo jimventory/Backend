@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-
+using System.Diagnostics.CodeAnalysis; 
 #nullable disable
 
 namespace Backend1.Migrations
 {
     /// <inheritdoc />
+    [ExcludeFromCodeCoverageAttribute]
     public partial class InitialCreate : Migration
     {
         /// <inheritdoc />

@@ -107,10 +107,14 @@ public class ItemRepositoryIntegrationTests
         Assert.Same(item, rv);
     }
 
-    [Fact(Skip = "Issue with DBs not being disposed.")]
+    [Fact]
     public void TestGetAllEmpty()
     {
-        using var db = new InventoryContext(_options);
+        var options = new DbContextOptionsBuilder<InventoryContext>()
+            .UseInMemoryDatabase(databaseName: "ItemRepositoryGetAllEmptyTestDatabase")
+            .Options;
+
+        using var db = new InventoryContext(options);
         var sut = new ItemRepository(db);
 
         var coll = sut.GetAll();
@@ -118,10 +122,14 @@ public class ItemRepositoryIntegrationTests
         Assert.Empty(coll);
     }
 
-    [Fact(Skip = "Issue with DBs not being disposed.")]
+    [Fact]
     public void TestGetAllWithItems()
     {
-        using var db = new InventoryContext(_options);
+        var options = new DbContextOptionsBuilder<InventoryContext>()
+            .UseInMemoryDatabase(databaseName: "ItemRepositoryGetAllWithItemsTestDatabase")
+            .Options;
+
+        using var db = new InventoryContext(options);
         var sut = new ItemRepository(db);
 
         var items = new List<Item>();

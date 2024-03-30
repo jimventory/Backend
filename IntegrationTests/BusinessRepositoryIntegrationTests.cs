@@ -107,10 +107,14 @@ public class BusinessRepositoryIntegrationTests
         Assert.Same(business, rv);
     }
 
-    [Fact(Skip = "Issue with DBs not being disposed.")]
+    [Fact]
     public void TestGetAllEmpty()
     {
-        using var db = new BusinessContext(_options);
+        var options = new DbContextOptionsBuilder<BusinessContext>()
+            .UseInMemoryDatabase(databaseName: "BusinessRepositoryGetAllEmptyTestDatabase")
+            .Options;
+
+        using var db = new BusinessContext(options);
         var sut = new BusinessRepository(db);
         
         var coll = sut.GetAll();
@@ -118,11 +122,14 @@ public class BusinessRepositoryIntegrationTests
         Assert.Empty(coll);
     }
 
-    [Fact(Skip = "Issue with DBs not being disposed.")]
+    [Fact]
     public void TestGetAllWithBusinesses()
     {
-        using var db = new BusinessContext(_options);
-        
+        var options = new DbContextOptionsBuilder<BusinessContext>()
+            .UseInMemoryDatabase(databaseName: "BusinessRepositoryGetAllEmptyTestDatabase")
+            .Options;
+
+        using var db = new BusinessContext(options);
         var sut = new BusinessRepository(db);
 
         var businesses = new List<Business>();

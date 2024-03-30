@@ -4,8 +4,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.IdentityModel.Tokens.Jwt;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.Logging.Abstractions;
 namespace TestHelpers;
 
+[ExcludeFromCodeCoverage]
 public static class AuthHelper
 {
     public static async Task<string> GetAccessToken()
@@ -48,6 +54,20 @@ public static class AuthHelper
         return accessToken;
     }
 
+    public static ClaimsPrincipal GetClaims(string identityString = "TestUser", string? nameIdentifier = "auth0|11110000000A")
+    {
+        var identity = new GenericIdentity(identityString);
+        var claims = new List<Claim>();
+
+        if (nameIdentifier is not null)
+            claims.Add(new Claim(ClaimTypes.NameIdentifier.ToString(), nameIdentifier));
+
+        var claimsIdentity = new ClaimsIdentity(identity, claims);
+
+        var rv = new ClaimsPrincipal(claimsIdentity);
+        return rv;
+    }
+
     public static async Task<HttpClient> ConstructAuthorizedClient(WebApplicationFactory<Program> factory, string? token = null)
     {
         // Get token if one was not manually passed in.
@@ -59,5 +79,31 @@ public static class AuthHelper
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         return client;
+    }
+
+    // I wrote this helper but decided to instead just unit test most controller endpoints.
+    // I'm going to keep this here for now, though.
+    public static async Task<uint> GetBusinessIdFromToken(string? token = null)
+    {
+        if (token is null)
+            token = await GetAccessToken();
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+
+        var accessToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+        if (accessToken is null)
+            throw new Exception("Failed to parse access token string.");
+
+        var nameIdentifier = accessToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier)?.Value;
+
+        if (nameIdentifier is null)
+            throw new Exception("Access token did not have ClaimType matching NameIdentifier");
+
+        var claimsPrincial = GetClaims(nameIdentifier: nameIdentifier);
+
+        var resolver = new UserBusinessIdResolver(NullLogger<UserBusinessIdResolver>.Instance);
+
+        return resolver.GetBusinessIdFromClaimsPrincipal(claimsPrincial);
     }
 }

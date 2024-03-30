@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Backend1;
 using Backend1.Abstractions;
 using Backend1.Data;
@@ -17,6 +16,7 @@ builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IBusinessRepository, BusinessRepository>();
 builder.Services.AddScoped<IBusinessService, BusinessService>();
+builder.Services.AddScoped<IUserBusinessIdResolver, UserBusinessIdResolver>();
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
