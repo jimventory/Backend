@@ -6,9 +6,11 @@ namespace Backend1;
 public class UserBusinessIdResolver : IUserBusinessIdResolver
 {
     private readonly ILogger _logger;
+    private readonly IBusinessService _businessService;
 
-    public UserBusinessIdResolver(ILogger<UserBusinessIdResolver> logger)
+    public UserBusinessIdResolver(IBusinessService businessService, ILogger<UserBusinessIdResolver> logger)
     {
+        _businessService = businessService;
         _logger = logger;
     }
 
@@ -33,6 +35,11 @@ public class UserBusinessIdResolver : IUserBusinessIdResolver
         var identNum = Convert.ToUInt32(identNumSubString, 16);
 
         _logger.LogInformation($"Converted Id is: {identNum}");
+
+        // Validate that business exists.
+        var exists = _businessService.Find(identNum);
+        if (exists == false)
+            throw new Exception("Business with the provided ID does not exist.");
 
         return identNum;
     }
