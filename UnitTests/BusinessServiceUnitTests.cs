@@ -44,4 +44,49 @@ public class BusinessServiceUnitTests
         
         Assert.True(sut.Add(business));
     }
+
+    [Fact]
+    public void TestFindFailure()
+    {
+        uint testId = 10;
+        var fakeBusinessRepo = A.Fake<IBusinessRepository>();
+        var businesses = new List<Business> { BusinessHelper.GetBoilerplateBusiness(id: 5) };
+
+        A.CallTo(() => fakeBusinessRepo.GetAll())
+            .Returns(businesses);
+
+        var sut = new BusinessService(fakeBusinessRepo, NullLogger<BusinessService>.Instance);
+
+        Assert.False(sut.Find(testId));
+    }
+    
+    [Fact]
+    public void TestFindSuccess()
+    {
+        uint testId = 10;
+        var fakeBusinessRepo = A.Fake<IBusinessRepository>();
+        var businesses = new List<Business> { BusinessHelper.GetBoilerplateBusiness(id: 10) };
+
+        A.CallTo(() => fakeBusinessRepo.GetAll())
+            .Returns(businesses);
+
+        var sut = new BusinessService(fakeBusinessRepo, NullLogger<BusinessService>.Instance);
+
+        Assert.True(sut.Find(testId));
+    }
+
+    [Fact]
+    public void TestFindException()
+    {
+        uint testId = 10;
+        var fakeBusinessRepo = A.Fake<IBusinessRepository>();
+        var businesses = new List<Business> { BusinessHelper.GetBoilerplateBusiness(id: 5) };
+
+        A.CallTo(() => fakeBusinessRepo.GetAll())
+            .Throws(new Exception("IBusinessRepository.GetAll Exception"));
+
+        var sut = new BusinessService(fakeBusinessRepo, NullLogger<BusinessService>.Instance);
+
+        Assert.False(sut.Find(testId));
+    }
 }
