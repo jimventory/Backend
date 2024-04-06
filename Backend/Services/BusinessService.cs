@@ -29,4 +29,18 @@ public class BusinessService : IBusinessService
         
         return true;
     }
+
+    public bool Find(uint id)
+    {
+        try
+        {
+            var business = _repository.GetAll().Any( business => business.Id == id);
+            return business;
+        }
+        catch (Exception e)
+        {
+            _logger.LogDebug("Exception occured when trying to find business : {ExMessage}", e.Message);
+            return false;
+        }
+    }
 }

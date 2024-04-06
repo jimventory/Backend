@@ -22,6 +22,10 @@ public class ItemService : IItemService
         try
         {
             var businessId = _claimsResolver.GetBusinessIdFromClaimsPrincipal(user);
+
+            // Override user provided business Id.
+            item.BusinessId = businessId;
+
             _repository.Add(item);
         }
         catch (Exception e)

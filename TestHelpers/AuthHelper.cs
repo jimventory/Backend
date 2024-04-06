@@ -83,6 +83,8 @@ public static class AuthHelper
 
     // I wrote this helper but decided to instead just unit test most controller endpoints.
     // I'm going to keep this here for now, though.
+    // I am commenting it out due to changes that are preventing it from compiling.
+    /*
     public static async Task<uint> GetBusinessIdFromToken(string? token = null)
     {
         if (token is null)
@@ -106,4 +108,5 @@ public static class AuthHelper
 
         return resolver.GetBusinessIdFromClaimsPrincipal(claimsPrincial);
     }
+    */
 }
