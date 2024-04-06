@@ -230,9 +230,9 @@ var assemblies = [
       { "name": "Backend1.Models.Item", "rp": "Backend_Item.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Repositories.BusinessRepository", "rp": "Backend_BusinessRepository.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 44, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Repositories.ItemRepository", "rp": "Backend_ItemRepository.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 45, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Backend1.Services.BusinessService", "rp": "Backend_BusinessService.html", "cl": 16, "ucl": 0, "cal": 16, "tl": 32, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Backend1.Services.ItemService", "rp": "Backend_ItemService.html", "cl": 70, "ucl": 0, "cal": 70, "tl": 125, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Backend1.UserBusinessIdResolver", "rp": "Backend_UserBusinessIdResolver.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 39, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.Services.BusinessService", "rp": "Backend_BusinessService.html", "cl": 25, "ucl": 0, "cal": 25, "tl": 46, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.Services.ItemService", "rp": "Backend_ItemService.html", "cl": 71, "ucl": 0, "cal": 71, "tl": 129, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.UserBusinessIdResolver", "rp": "Backend_UserBusinessIdResolver.html", "cl": 19, "ucl": 0, "cal": 19, "tl": 46, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "Backend_Program.html", "cl": 38, "ucl": 0, "cal": 38, "tl": 57, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
