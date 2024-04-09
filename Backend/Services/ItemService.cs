@@ -8,9 +8,9 @@ public class ItemService : IItemService
 {
     private readonly IItemRepository _repository;
     private readonly ILogger _logger;
-    private readonly IUserBusinessIdResolver _claimsResolver;
+    private readonly IUserBusinessIdValidator _claimsResolver;
     
-    public ItemService(IItemRepository repo, IUserBusinessIdResolver claimsResolver, ILogger<ItemService> logger)
+    public ItemService(IItemRepository repo, IUserBusinessIdValidator claimsResolver, ILogger<ItemService> logger)
     {
         _repository = repo;
         _claimsResolver = claimsResolver;

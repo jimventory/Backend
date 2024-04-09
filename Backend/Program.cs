@@ -17,6 +17,7 @@ builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IBusinessRepository, BusinessRepository>();
 builder.Services.AddScoped<IBusinessService, BusinessService>();
 builder.Services.AddScoped<IUserBusinessIdResolver, UserBusinessIdResolver>();
+builder.Services.AddScoped<IUserBusinessIdValidator, UserBusinessIdResolverValidator>();
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
