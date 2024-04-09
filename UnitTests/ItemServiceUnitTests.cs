@@ -13,7 +13,7 @@ public class ItemServiceUnitTests
 {
     private readonly ITestOutputHelper _outputHelper;
     private readonly ClaimsPrincipal _claims;
-    private IUserBusinessIdResolver _fakeResolver;
+    private IUserBusinessIdValidator _fakeResolver;
 
     public ItemServiceUnitTests(ITestOutputHelper testOutputHelper)
     {
@@ -21,7 +21,7 @@ public class ItemServiceUnitTests
         _claims = AuthHelper.GetClaims();
        
         // Create a ClaimsResolver that assumes the businessId is 10.
-        _fakeResolver = A.Fake<IUserBusinessIdResolver>();
+        _fakeResolver = A.Fake<IUserBusinessIdValidator>();
         A.CallTo(() => _fakeResolver.GetBusinessIdFromClaimsPrincipal(A<ClaimsPrincipal>.Ignored))
             .Returns((uint)10);
     }
