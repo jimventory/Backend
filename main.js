@@ -221,7 +221,7 @@ var assemblies = [
   {
     "name": "Backend",
     "classes": [
-      { "name": "Backend1.Controllers.BusinessController", "rp": "Backend_BusinessController.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 29, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.Controllers.BusinessController", "rp": "Backend_BusinessController.html", "cl": 10, "ucl": 6, "cal": 16, "tl": 44, "cb": 2, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Controllers.InventoryController", "rp": "Backend_InventoryController.html", "cl": 30, "ucl": 0, "cal": 30, "tl": 80, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Data.BusinessContext", "rp": "Backend_BusinessContext.html", "cl": 7, "ucl": 1, "cal": 8, "tl": 19, "cb": 1, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Data.InventoryContext", "rp": "Backend_InventoryContext.html", "cl": 7, "ucl": 1, "cal": 8, "tl": 19, "cb": 1, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
@@ -230,10 +230,11 @@ var assemblies = [
       { "name": "Backend1.Models.Item", "rp": "Backend_Item.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Repositories.BusinessRepository", "rp": "Backend_BusinessRepository.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 44, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Repositories.ItemRepository", "rp": "Backend_ItemRepository.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 45, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Backend1.Services.BusinessService", "rp": "Backend_BusinessService.html", "cl": 25, "ucl": 0, "cal": 25, "tl": 46, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.Services.BusinessService", "rp": "Backend_BusinessService.html", "cl": 26, "ucl": 9, "cal": 35, "tl": 64, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Services.ItemService", "rp": "Backend_ItemService.html", "cl": 71, "ucl": 0, "cal": 71, "tl": 129, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Backend1.UserBusinessIdResolver", "rp": "Backend_UserBusinessIdResolver.html", "cl": 19, "ucl": 0, "cal": 19, "tl": 46, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Program", "rp": "Backend_Program.html", "cl": 38, "ucl": 0, "cal": 38, "tl": 57, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.UserBusinessIdResolver", "rp": "Backend_UserBusinessIdResolver.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 24, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.UserBusinessIdResolverValidator", "rp": "Backend_UserBusinessIdResolverValidator.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 33, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Program", "rp": "Backend_Program.html", "cl": 39, "ucl": 0, "cal": 39, "tl": 58, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "TestHelpers",
