@@ -26,7 +26,8 @@ builder.Services.AddCors(options =>
             policy =>
             {
                 policy.WithOrigins("http://localhost:3000",
-                        "https://frontend-brown-gamma-36.vercel.app/")
+                        "https://frontend-brown-gamma-36.vercel.app",
+                        "https://192.168.1.133:3000")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
             });

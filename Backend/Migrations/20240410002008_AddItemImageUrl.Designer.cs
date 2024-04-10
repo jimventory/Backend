@@ -2,17 +2,20 @@
 using Backend1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using System.Diagnostics.CodeAnalysis; 
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Backend1.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    [ExcludeFromCodeCoverage]
-    partial class InventoryContextModelSnapshot : ModelSnapshot
+    [Migration("20240410002008_AddItemImageUrl")]
+    partial class AddItemImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
