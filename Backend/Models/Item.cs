@@ -10,4 +10,5 @@ public class Item
     public uint Sales {  get; set; } 
     public uint LowStockNotification {  get; set; }
     public string About { get; set; } = string.Empty;
+    public string ImageUrl { get; set; } = string.Empty;
 }
