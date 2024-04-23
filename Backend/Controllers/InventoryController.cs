@@ -77,4 +77,78 @@ public class InventoryController : Controller
 
         return Ok(rv);
     }
+
+    [HttpPost]
+    [Route("uploadInventory")]
+    public ActionResult UploadInventory()
+    {
+        if (Request.Form.Files.Count == 0)
+            return BadRequest("No file uploaded.");
+        if (Request.Form.Files.Count > 1)
+            return BadRequest("To many files uploaded.");
+
+        const int maxFileSize = 5 * 1024 * 1024; // 5 MB in bytes
+        string[] permittedExtensions = { ".csv" };
+        var file = Request.Form.Files[0];
+        var filename = Path.GetFileName(file.FileName);
+
+        // Doing some file checks
+        if (file == null || file.Length == 0)
+            return BadRequest("File is empty.");
+        if (file.Length > maxFileSize)
+            return BadRequest("File is to large.");
+        if (!permittedExtensions.Contains(Path.GetExtension(filename)))
+            return BadRequest("File type not allowed.");
+
+        try
+        {
+            using (var reader = new StreamReader(file.OpenReadStream()))
+            {
+                int itemCount = 0;
+                while (!reader.EndOfStream)
+                {
+                    Console.Write(itemCount);
+                    var line = reader.ReadLine();
+                    var values = line.Split(",");
+
+                    // Checking that their are not more attributes than possible
+                    if (values.Length > 7)
+                    {
+                        _logger.LogError($"To many values on line: {line}");
+                        continue;
+                    }
+
+                    // Want at least something for the name
+                    if (string.IsNullOrWhiteSpace(values[0]))
+                    {
+                        _logger.LogError($"The first value is empty on line: {line}");
+                        continue;
+                    }
+
+                    // Adding elements to an item if they are valid
+                    var item = new Item
+                    {
+                        Name = values[0],
+                        Quantity = values.Length > 1 && uint.TryParse(values[1], out uint quantity) ? quantity : 0,
+                        Price = values.Length > 2 && double.TryParse(values[2], out double price) ? price : 0.0,
+                        About = values.Length > 3 ? values[3] : string.Empty,
+                        ImageUrl = values.Length > 4 ? values[4] : string.Empty,
+                        Sales = values.Length > 5 && uint.TryParse(values[5], out uint sales) ? sales : 0,
+                        LowStockNotification = values.Length > 6 && uint.TryParse(values[6], out uint stock) ? stock : 0,
+                    };
+
+                    _itemService.Add(item, User);
+                    itemCount++;
+                }
+                if (itemCount > 0)
+                    return Ok($"Added {itemCount} new items.");
+                else return BadRequest("No valid items in file.");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error processing CSV File: {ex.Message}");
+            return StatusCode(500);
+        }
+    }
 }
