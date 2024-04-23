@@ -222,7 +222,7 @@ var assemblies = [
     "name": "Backend",
     "classes": [
       { "name": "Backend1.Controllers.BusinessController", "rp": "Backend_BusinessController.html", "cl": 10, "ucl": 6, "cal": 16, "tl": 44, "cb": 2, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Backend1.Controllers.InventoryController", "rp": "Backend_InventoryController.html", "cl": 30, "ucl": 0, "cal": 30, "tl": 80, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Backend1.Controllers.InventoryController", "rp": "Backend_InventoryController.html", "cl": 30, "ucl": 52, "cal": 82, "tl": 154, "cb": 6, "tb": 46, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Data.BusinessContext", "rp": "Backend_BusinessContext.html", "cl": 7, "ucl": 1, "cal": 8, "tl": 19, "cb": 1, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.Data.InventoryContext", "rp": "Backend_InventoryContext.html", "cl": 7, "ucl": 1, "cal": 8, "tl": 19, "cb": 1, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Backend1.EnvVarHelper", "rp": "Backend_EnvVarHelper.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 10, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
@@ -247,9 +247,17 @@ var metrics = [{ "name": "Cyclomatic complexity", "abbreviation": "cc", "explana
 var historicCoverageExecutionTimes = [];
 
 var riskHotspotMetrics = [
+      { "name": "Cyclomatic complexity", "explanationUrl": "https://en.wikipedia.org/wiki/Cyclomatic_complexity" },
+      { "name": "NPath complexity", "explanationUrl": "https://modess.io/npath-complexity-cyclomatic-complexity-explained" },
 ];
 
 var riskHotspots = [
+  {
+    "assembly": "Backend", "class": "Backend1.Controllers.InventoryController", "reportPath": "Backend_InventoryController.html", "methodName": "Microsoft.AspNetCore.Mvc.ActionResult Backend1.Controllers.InventoryController::UploadInventory()", "methodShortName": "UploadInventory()", "fileIndex": 0, "line": 84,
+    "metrics": [
+      { "value": 40, "exceeded": true },
+      { "value": 40, "exceeded": false },
+    ]},
 ];
 
 var branchCoverageAvailable = true;
